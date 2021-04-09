@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ *
+ */
+-->
+<payment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Payment:etc/payment.xsd">
+    <groups>
+        <group id="prisma_decidir">
+            <label>Prisma Decidir</label>
+        </group>
+    </groups>
+    <methods>
+        <method name="decidir">
+            <allow_multiple_address>0</allow_multiple_address>
+        </method>
+    </methods>
+    <credit_cards>
+        <type id="AE" order="0">
+            <label>American Express</label>
+        </type>
+        <type id="VI" order="10">
+            <label>Visa</label>
+        </type>
+        <type id="MC" order="20">
+            <label>MasterCard</label>
+        </type>
+        <type id="DN" order="30">
+            <label>Diners Club</label>
+        </type>
+        <type id="TS" order="40">
+            <label>Tarjeta Shopping</label>
+        </type>
+        <type id="TN" order="50">
+            <label>Tarjeta Naranja</label>
+        </type>
+        <type id="IC" order="60">
+            <label>ItalCred</label>
+        </type>
+        <type id="AC" order="70">
+            <label>Argencard</label>
+        </type>
+        <type id="CP" order="80">
+            <label>Cope Plus</label>
+        </type>
+        <type id="NX" order="90">
+            <label>Nexp</label>
+        </type>
+        <type id="CM" order="100">
+            <label>Credimás</label>
+        </type>
+        <type id="TNV" order="110">
+            <label>Tarjeta Nevada</label>
+        </type>
+        <type id="NAT" order="120">
+            <label>Nativa</label>
+        </type>
+        <type id="TCS" order="130">
+            <label>Tarjeta Cencosud</label>
+        </type>
+        <type id="TCCM" order="140">
+            <label>Tarjeta Carefour / Cetelem</label>
+        </type>
+        <type id="TPN" order="150">
+            <label>Tarjeta Pyme Nación</label>
+        </type>
+        <type id="BBPS" order="160">
+            <label>BBPS</label>
+        </type>
+        <type id="QI" order="170">
+            <label>Qida</label>
+        </type>
+        <type id="GRA" order="180">
+            <label>Grupar</label>
+        </type>
+        <type id="PTT" order="190">
+            <label>Tarjeta Patagonia 365</label>
+        </type>
+        <type id="TCD" order="200">
+            <label>Tarjeta Club Día</label>
+        </type>
+        <type id="TUY" order="210">
+            <label>Tuya</label>
+        </type>
+        <type id="TDI" order="220">
+            <label>Distribution</label>
+        </type>
+        <type id="TLA" order="230">
+            <label>Tarjeta La Anónima</label>
+        </type>
+        <type id="TCG" order="240">
+            <label>CrediGuia</label>
+        </type>
+        <type id="TCP" order="250">
+            <label>Cabal Prisma</label>
+        </type>
+        <type id="TSL" order="260">
+            <label>Tarjeta Sol</label>
+        </type>
+        <type id="TVC" order="270">
+            <label>FavaCard</label>
+        </type>
+        <type id="MAP" order="280">
+            <label>MasterCard Prisma</label>
+        </type>
+        <type id="VD" order="290">
+            <label>Visa Débito</label>
+        </type>
+        <type id="MDP" order="300">
+            <label>MasterCard Debit Prisma</label>
+        </type>
+        <type id="MTP" order="310">
+            <label>Maestro Prisma</label>
+        </type>
+        <type id="CDP" order="320">
+            <label>Cabal Débito Prisma</label>
+        </type>
+    </credit_cards>
+</payment>
