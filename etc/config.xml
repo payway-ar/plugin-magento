@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ *
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <decidir>
+                <title>Credit Card (Decidir)</title>
+                <active>0</active>
+                <debug>1</debug>
+                <can_authorize>1</can_authorize>
+                <can_capture>1</can_capture>
+                <can_refund>1</can_refund>
+                <can_void>1</can_void>
+                <can_cancel>1</can_cancel>
+                <can_use_checkout>1</can_use_checkout>
+                <can_use_internal>1</can_use_internal>
+                <is_gateway>1</is_gateway>
+                <cctypes>VI,AE,MC</cctypes>
+                <cctypes_mapper><![CDATA[{"VI":"1","AE":"65","MC":"104","DN":"8","TS":"23","TN":"24","IC":"29","AC":"30","CP":"34","NX":"37","CM":"38","TNV":"39","NAT":"42","TCS":"43","TCCM":"44","TPN":"45","BBPS":"50","QI":"52","GRA":"54","PTT":"55","TCD":"56","TUY":"59","TDI":"60","TLA":"61","TCG":"62","TCP":"63","TSL":"64","TVC":"103","MAP":"104","VD":"31","MDP":"105","MTP":"106","CDP":"108"}]]></cctypes_mapper>
+                <installments>1</installments>
+                <useccv>1</useccv>
+                <order_status>processing</order_status>
+                <model>DecidirFacade</model>
+                <payment_action>authorize_capture</payment_action>
+                <module_mode>sandbox</module_mode>
+                <sandbox_public_key backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
+                <sandbox_private_key backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
+                <production_public_key backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
+                <production_private_key backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
+                <sandbox_js_url>https://developers.decidir.com/api/v2</sandbox_js_url>
+                <production_js_url>https://live.decidir.com/api/v2</production_js_url>
+                <group>prisma_decidir</group>
+                <privateInfoKeys>token,bin</privateInfoKeys>
+                <paymentInfoKeys>cc_type,cc_exp_month,cc_exp_year,cc_number</paymentInfoKeys>
+            </decidir>
+        </payment>
+    </default>
+</config>

@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Gateway Http Client error codes
+ *
+ * Currently PDP SDK does not return the HTTP error code
+ * so we've matched based on the `error_type` from their response
+ * in order to provide a meaningful error message to the diff areas
+ *
+ * @see Prisma\Decidir\Gateway\Validator\ErrorCodesProvider
+ */
+-->
+<mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Payment:etc/error_mapping.xsd">
+    <message_list>
+        <!-- Keep errors at hand for future implementation -->
+        <message code="0" translate="true">Unknown Response error</message>
+        <message code="400" translate="true">Malformed JSON data</message>
+        <message code="401" translate="true">Invalid API key</message>
+        <message code="402" translate="true">Data provided is invalid</message>
+        <message code="404" translate="true">Data provided was not found</message>
+        <message code="409" translate="true">Unexpected API error</message>
+
+        <!-- Active error list based on the `error_type` response field -->
+        <message code="unknown_error" translate="true">Unknown Response error</message>
+        <message code="malformed_request_error" translate="true">Malformed JSON data</message>
+        <message code="authentication_error" translate="true">Invalid API key</message>
+        <message code="invalid_request_error" translate="true">Data provided is invalid</message>
+        <message code="not_found_error" translate="true">Data provided was not found</message>
+        <message code="api_error" translate="true">Unexpected API error</message>
+        <message code="repeated" translate="true">Gateway error. Try again later</message>
+
+        <!-- CCard error codes friendly message showed by ValidatorPool -->
+        <message code="1" translate="true">Solicitar autorización telefónica</message>
+        <message code="2" translate="true">Solicitar autorización telefónica</message>
+        <message code="3" translate="true">Verificar parámetros del sistema, código de comercio mal cargado</message>
+        <message code="4" translate="true">Denegada, capturar la tarjeta.</message>
+        <message code="5" translate="true">Denegada</message>
+        <message code="7" translate="true">Denegada, llamar al Centro de Autorizaciones</message>
+        <message code="8" translate="true">Ingreso manual incorrecto</message>
+        <message code="12" translate="true">Verificar el sistema, transacción no reconocida en el sistema</message>
+        <message code="13" translate="true">Verificar el sistema, error en el formato del campo importe</message>
+        <message code="14" translate="true">Denegada, tarjeta no corresponde</message>
+        <message code="19" translate="true">Auto approve in ReceivePayment</message>
+        <message code="25" translate="true">Denegada, registro no encontrado en el archivo de transacciones</message>
+        <message code="28" translate="true">Momentáneamente el servicio no está disponible. Se debe reintentar en unos segundos</message>
+        <message code="30" translate="true">Verificar el sistema, error en el formato del mensaje</message>
+        <message code="31" translate="true">Error de datos, reintente más tarde</message>
+        <message code="38" translate="true">Denegada, excede cantidad de reintentos de PIN</message>
+        <message code="39" translate="true">Ingreso manual incorrecto</message>
+        <message code="43" translate="true">Denegada, retener tarjeta</message>
+        <message code="45" translate="true">Denegada, tarjeta inhibida para operar en cuotas</message>
+        <message code="46" translate="true">Denegada, tarjeta no está vigente aún</message>
+        <message code="47" translate="true">Denegada, tarjeta requiere ingreso de PIN</message>
+        <message code="48" translate="true">Denegada, excede cantidad máxima de cuotas permitida</message>
+        <message code="49" translate="true">Verificar el sistema, error en formato de fecha de expiración (vto)</message>
+        <message code="50" translate="true">Entrega supera limite</message>
+        <message code="51" translate="true">Denegada, no posee fondos suficientes</message>
+        <message code="53" translate="true">Denegada, no existe cuenta asociada</message>
+        <message code="54" translate="true">Denegada, tarjeta expirada</message>
+        <message code="55" translate="true">Denegada, código de identificación personal es incorrecto</message>
+        <message code="56" translate="true">Denegada, emisor no habilitado en el sistema</message>
+        <message code="57" translate="true">Verificar el sistema, transacción no permitida a dicha tarjeta</message>
+        <message code="58" translate="true">Verificar el sistema, transacción no permitida a dicha terminal</message>
+        <message code="61" translate="true">Denegada, excede límite remanente de la tarjeta</message>
+        <message code="65" translate="true">Denegada, excede límite remanente de la tarjeta</message>
+        <message code="76" translate="true">Solicitar autorización telefónica</message>
+        <message code="77" translate="true">Denegada, cantidad de cuotas inválida para el plan seleccionado</message>
+        <message code="89" translate="true">Denegada, número de terminal no habilitado por el Emisor</message>
+        <message code="91" translate="true">Solicitar autorización telefónica</message>
+        <message code="94" translate="true">Denegada</message>
+        <message code="95" translate="true">Diferencias en la conciliación del cierre</message>
+        <message code="96" translate="true">Mal funcionamiento del sistema. Solicitar autorización telefónica</message>
+        <message code="97" translate="true">Error en sistema host</message>
+        <message code="98" translate="true">Deben imprimir la información Suministrada en el Campo ISO 63</message>
+    </message_list>
+</mapping>
