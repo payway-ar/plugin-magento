@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ *
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment" type="text" sortOrder="400" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="decidir" translate="label" type="text" sortOrder="700" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>PRISMA Decidir</label>
+                <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" canRestore="1">
+                    <label>Status</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="title" translate="label value" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" canRestore="1">
+                    <label>Title</label>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
+                </field>
+                <field id="order_status" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" canRestore="1">
+                    <label>New Order Status</label>
+                    <source_model>Magento\Sales\Model\Config\Source\Order\Status</source_model>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
+                    <comment>The status in which the Order will be left, after the payment is processed</comment>
+                </field>
+                <field id="cctypes" translate="label" type="multiselect" sortOrder="30" showInDefault="1" showInWebsite="1" canRestore="1">
+                    <label>Available Credit Cards</label>
+                    <source_model>Prisma\Decidir\Model\Config\Source\CcTypes</source_model>
+                </field>
+                <field id="installments" translate="label" type="multiselect" sortOrder="35" showInDefault="1" showInWebsite="1" canRestore="1">
+                    <label>Available Installments</label>
+                    <source_model>Prisma\Decidir\Model\Config\Source\Installments</source_model>
+                </field>
+                <field id="module_mode" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1">
+                    <label>Mode</label>
+                    <source_model>Prisma\Decidir\Model\Config\Source\ModuleModes</source_model>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
+                </field>
+                <field id="sandbox_site_id" translate="label" type="text" sortOrder="71" showInDefault="1" showInWebsite="1">
+                    <label>Sandbox Site Id</label>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                        <field id="*/*/module_mode">sandbox</field>
+                    </depends>
+                </field>
+                <field id="sandbox_public_key" translate="label" type="obscure" sortOrder="72" showInDefault="1" showInWebsite="1" >
+                    <label>Sandbox Public Key</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                        <field id="*/*/module_mode">sandbox</field>
+                    </depends>
+                </field>
+                <field id="sandbox_private_key" translate="label" type="obscure" sortOrder="73" showInDefault="1" showInWebsite="1">
+                    <label>Sandbox Private Key</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                        <field id="*/*/module_mode">sandbox</field>
+                    </depends>
+                </field>
+                <field id="production_site_id" translate="label" type="text" sortOrder="71" showInDefault="1" showInWebsite="1">
+                    <label>Production Site Id</label>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                        <field id="*/*/module_mode">production</field>
+                    </depends>
+                </field>
+                <field id="production_public_key" translate="label" type="obscure" sortOrder="72" showInDefault="1" showInWebsite="1" >
+                    <label>Production Public Key</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                        <field id="*/*/module_mode">production</field>
+                    </depends>
+                </field>
+                <field id="production_private_key" translate="label" type="obscure" sortOrder="73" showInDefault="1" showInWebsite="1">
+                    <label>Production Private Key</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                        <field id="*/*/module_mode">production</field>
+                    </depends>
+                </field>
+                <field id="sort_order" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1">
+                    <label>Sort Order</label>
+                    <frontend_class>validate-number</frontend_class>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
