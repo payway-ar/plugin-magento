@@ -1,6 +1,6 @@
 <?php
 /**
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 declare(strict_types=1);
 
@@ -14,6 +14,25 @@ use Magento\Payment\Gateway\Validator\ResultInterface;
  */
 interface ValidatorInterface
 {
+    /**
+     * @var string
+     */
+    const STATUS_APPROVED = 'approved';
+
+    /**
+     * @var string
+     */
+    const STATUS_REJECTED = 'rejected';
+
+    /**
+     * @var string
+     */
+    const STATUS_ANNULLED = 'annulled';
+
+    /**
+     * @var string
+     */
+    const STATUS_REVIEW = 'review';
 
     /**
      * Validate data
@@ -22,5 +41,4 @@ interface ValidatorInterface
      * @return ResultInterface Magento\Payment\Gateway\Validator\ResultInterface
      */
     public function validate(array $validationSubject) :ResultInterface;
-
 }

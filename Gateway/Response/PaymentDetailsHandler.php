@@ -1,7 +1,6 @@
 <?php
 /**
- *
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 declare(strict_types=1);
 
@@ -95,6 +94,12 @@ class PaymentDetailsHandler implements HandlerInterface
      */
     private $state;
 
+    /**
+     * PaymentDetailsHandler constructor.
+     * @param Config $config
+     * @param DataReader $reader
+     * @param State $state
+     */
     public function __construct(
         Config $config,
         DataReader $reader,
@@ -160,6 +165,8 @@ class PaymentDetailsHandler implements HandlerInterface
                 : '';
 
             $payment->setCcStatus($status);
+            $payment->setCcStatusDescription($status);
+
             // phpcs:ignore Magento2.CodeAnalysis.EmptyBlock
         } catch (InvalidArgumentException $exception) {
             // pass
@@ -198,7 +205,6 @@ class PaymentDetailsHandler implements HandlerInterface
             // pass
         }
     }
-
 
     /**
      * Sets cc card authorization code

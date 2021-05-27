@@ -1,7 +1,6 @@
 <?php
 /**
- *
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 declare(strict_types=1);
 
@@ -61,10 +60,12 @@ class CustomerDataBuilder implements BuilderInterface
         /** @TODO: improve validation since there could be an scenario where Braintree is disabled */
         /** @var OrderAdapter $order */
         $order = $payment->getOrder();
-
+        $customerId = $order->getCustomerId()
+            ? $order->getCustomerId()
+            : $order->getBillingAddress()->getFirstname() . '_' . $order->getBillingAddress()->getLastname();
         return [
             self::CUSTOMER => [
-                self::ID => $order->getCustomerId(),
+                self::ID => (string)$customerId,
                 self::EMAIL => $order->getBillingAddress()->getEmail(),
                 self::IP_ADDRESS => $order->getRemoteIp(),
             ]

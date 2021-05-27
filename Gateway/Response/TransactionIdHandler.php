@@ -1,6 +1,6 @@
 <?php
 /**
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 declare(strict_types=1);
 
@@ -16,6 +16,9 @@ use Prisma\Decidir\Model\Config;
  */
 class TransactionIdHandler implements HandlerInterface
 {
+    /**
+     * @var string
+     */
     const FIELD_ID = 'id';
 
     /**
@@ -28,6 +31,11 @@ class TransactionIdHandler implements HandlerInterface
      */
     private $reader;
 
+    /**
+     * TransactionIdHandler constructor.
+     * @param Config $config
+     * @param DataReader $reader
+     */
     public function __construct(
         Config $config,
         DataReader $reader

@@ -1,7 +1,6 @@
 <?php
 /**
- *
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 declare(strict_types=1);
 
@@ -15,6 +14,9 @@ use Prisma\Decidir\Gateway\Helper\DataReader;
  */
 class SaleHandler implements HandlerInterface
 {
+    /**
+     * @var string
+     */
     const DEFAULT_TITLE = 'Prisma Decidir (Sale Handler)';
 
     /**

@@ -1,6 +1,5 @@
 /**
- *
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 /**
  * Makes Decidir Payment method available into the Checkout Payment step

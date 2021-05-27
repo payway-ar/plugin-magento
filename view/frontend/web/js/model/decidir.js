@@ -1,6 +1,5 @@
 /**
- *
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 define([
     'jquery',
@@ -73,17 +72,13 @@ define([
 
     return {
         loadToken: function (data) {
-            console.log(
-                '- decidir model, configuring sandbox with:',
-                config.getUrl(),
-                config.getPublicKey()
-            );
-
             // Inclusion of Decidir JS SDK file, creates a `Decidir` global-scoped variable
+            // if CS is active, disableCs must be false and viceversa
+            var disableCs = !config.getIsCsActive();
+
             var api = new Decidir(
                 config.getUrl(),
-                // Cybersource isn't integrated yet
-                0
+                disableCs
                 ),
                 tokenData = _generateDummyForm(
                     _normalizeData(data)

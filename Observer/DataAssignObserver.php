@@ -1,6 +1,6 @@
 <?php
 /**
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 declare(strict_types=1);
 
@@ -36,6 +36,9 @@ class DataAssignObserver extends AbstractDataAssignObserver
         self::INSTALLMENTS,
     ];
 
+    /**
+     * @param Observer $observer
+     */
     public function execute(Observer $observer)
     {
         $data = $this->readDataArgument($observer);

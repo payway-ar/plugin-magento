@@ -1,6 +1,5 @@
 /**
- *
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 define([
     'jquery',
@@ -64,12 +63,18 @@ define([
         isActive: function() {
             return config.getIsActive();
         },
-
+        /**
+         *
+         * @returns {*}
+         */
         validate: function () {
             var $form = $('#' + this.getCode() + '-form');
             return $form.validation() && $form.validation('isValid');
         },
-
+        /**
+         *
+         * @returns {{additional_data: {cc_cid: *, cc_type: *, cc_exp_month: *, card_holder_name: *, installments: *, bin: *, card_holder_doc_type: *, cc_number: *, card_holder_doc_number: *, last_four_digits: *, cc_exp_year: *, token: *}, method: *}}
+         */
         getData: function () {
             var data = {
                 'method': this.item.method,
@@ -79,10 +84,6 @@ define([
                     'cc_exp_year': this.creditCardExpYear(),
                     'cc_exp_month': this.creditCardExpMonth(),
                     'cc_number': this.creditCardNumber(),
-
-                    // 'card_number': this.creditCardNumber(),
-                    // 'card_expiration_month': this.creditCardExpMonth(),
-                    // 'card_expiration_year': this.creditCardExpYear(),
                     'card_holder_name': this.creditCardHolderName(),
                     'card_holder_doc_number': this.creditCardDocumentNumber(),
                     'card_holder_doc_type': this.creditCardDocumentType(),
@@ -90,13 +91,11 @@ define([
                     'bin': this.bin(),
                     'last_four_digits': this.lastFourDigits(),
                     'installments': this.installments(),
-                    // 'security_code': this.creditCardVerificationNumber()
                 }
             };
 
             return data;
         },
-
         /**
          * Get list of available credit card types
          * @returns {Object}
@@ -104,7 +103,6 @@ define([
         getCcAvailableTypes: function () {
             return config.getCcAvailableTypes();
         },
-
         /**
          * Get list of months
          * @returns {Object}
@@ -112,7 +110,6 @@ define([
         getCcMonths: function () {
             return config.getCcMonths();
         },
-
         /**
          * Get list of years
          * @returns {Object}
@@ -120,11 +117,13 @@ define([
         getCcYears: function () {
             return config.getCcYears();
         },
-
+        /**
+         *
+         * @returns {*}
+         */
         getDocumentTypes: function () {
             return config.getDocumentTypes();
         },
-
         /**
          * Check if current payment has verification
          * @returns {Boolean}
@@ -132,7 +131,6 @@ define([
         hasVerification: function () {
             return config.hasVerification();
         },
-
         /**
          * Get image url for CVV
          * @returns {String}
@@ -140,7 +138,6 @@ define([
         getCvvImageUrl: function () {
             return config.getCvvImageUrl();
         },
-
         /**
          * Get image for CVV
          * @returns {String}
@@ -151,7 +148,6 @@ define([
                 '" title="' + $t('Card Verification Number Visual Reference') +
                 '" />';
         },
-
         /**
          * Get list of available credit card types values
          * @returns {Object}
@@ -164,7 +160,6 @@ define([
                 };
             });
         },
-
         /**
          * Get list of available month values
          * @returns {Object}
@@ -177,7 +172,6 @@ define([
                 };
             });
         },
-
         /**
          * Get list of available year values
          * @returns {Object}
@@ -190,7 +184,10 @@ define([
                 };
             });
         },
-
+        /**
+         *
+         * @returns {*}
+         */
         getCcDocumentTypes: function () {
             return _.map(this.getDocumentTypes(), function (value, key) {
                 return {
@@ -199,7 +196,6 @@ define([
                 }
             });
         },
-
         /**
          * Is legend available to display
          * @returns {Boolean}
@@ -207,7 +203,6 @@ define([
         isShowLegend: function () {
             return config.isShowLegend();
         },
-
         /**
          * Get available credit card type by code
          * @param {String} code
@@ -255,38 +250,45 @@ define([
                 };
             });
         },
-
+        /**
+         * Is CS (cybersource) enable
+         * @returns bool|Boolean
+         */
+        isCsActive: function() {
+            return config.getIsCsActive();
+        },
+        /**
+         *
+         * @returns {boolean}
+         */
         generateToken: function () {
             var self = this;
-            console.log('generateToken');
             if (!this.validate()) {
                 return false;
             }
-
             this.beforePlaceOrder()
                 .then(
                     function (result) {
-                        console.log('loadToken in beforePlaceOrder result: ', result);
                         this.bin(result.bin);
                         this.token(result.id);
                         this.isTokenReady(true);
                         this.lastFourDigits(result.last_four_digits);
-                        console.log('-- token generated, getData() ', this.getData());
                         return self.placeOrder();
                     }.bind(this),
                     function (error) {
                         console.error(error);
-                        // console.log('Payment Token could not be generated at this time.');
-
                         this.publishErrorMessage('Payment Token could not be generated at this time.');
                         this.isTokenReady(false);
                     }.bind(this)
                 ).finally(function () {
-                    // console.log('finally: ', this.getData());
                     }.bind(this)
                 );
         },
-
+        /**
+         *
+         * @param data
+         * @returns {Promise}
+         */
         beforePlaceOrder: function (data) {
             return decidir.loadToken(this.getData().additional_data)
                 .then(
@@ -298,7 +300,10 @@ define([
                     }
                 );
         },
-
+        /**
+         *
+         * @param message
+         */
         publishErrorMessage: function (message) {
             messageList.addErrorMessage({
                 message: message

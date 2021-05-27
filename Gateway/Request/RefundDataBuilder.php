@@ -1,6 +1,6 @@
 <?php
 /**
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 declare(strict_types=1);
 
@@ -15,6 +15,7 @@ use Prisma\Decidir\Gateway\Helper\DataReader;
 use Psr\Log\LoggerInterface;
 
 /**
+ * Class RefundDataBuilder
  *
  */
 class RefundDataBuilder implements BuilderInterface
@@ -42,6 +43,10 @@ class RefundDataBuilder implements BuilderInterface
         $this->logger = $logger;
     }
 
+    /**
+     * @param array $buildSubject
+     * @return array
+     */
     public function build(array $buildSubject)
     {
         $object = $this->reader->readPayment($buildSubject);
@@ -66,7 +71,6 @@ class RefundDataBuilder implements BuilderInterface
         $id = str_replace(
             '-' . TransactionInterface::TYPE_REFUND,
             '',
-//            $payment->getParentTransactionId()
             $payment->getTransactionId()
         );
 

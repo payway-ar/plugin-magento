@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
- *
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
@@ -90,6 +89,7 @@
                 <item name="txn_id" xsi:type="string">Prisma\Decidir\Gateway\Response\TransactionIdHandler</item>
                 <item name="credit_card" xsi:type="string">Prisma\Decidir\Gateway\Response\CreditCardHandler</item>
                 <item name="address_validation" xsi:type="string">Prisma\Decidir\Gateway\Response\AddressValidationHandler</item>
+                <item name="cybersource" xsi:type="string">Prisma\Decidir\Gateway\Response\Cybersource\CybersourceHandler</item>
             </argument>
         </arguments>
     </virtualType>
@@ -107,10 +107,19 @@
                 <item name="currency" xsi:type="string">Prisma\Decidir\Gateway\Request\Order\CurrencyDataBuilder</item>
                 <item name="description" xsi:type="string">Prisma\Decidir\Gateway\Request\DescriptionDataBuilder</item>
                 <item name="establishment_data" xsi:type="string">Prisma\Decidir\Gateway\Request\Order\EstablishmentDataBuilder</item>
+                <item name="cybersource_builder" xsi:type="string">Prisma\Decidir\Gateway\Request\Cybersource\CybersourceBuilderPool</item>
             </argument>
         </arguments>
     </virtualType>
 
+    <!-- Cysbersource Retail Processors-->
+    <type name="Prisma\Decidir\Gateway\Request\Cybersource\CybersourceBuilderPool">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="retail" xsi:type="object">Prisma\Decidir\Gateway\Request\Cybersource\Processors\RetailProcessor</item>
+            </argument>
+        </arguments>
+    </type>
     <!-- Validators -->
     <virtualType name="DecidirValidatorPool" type="Magento\Payment\Gateway\Validator\ValidatorPool">
         <arguments>
@@ -124,8 +133,9 @@
     <type name="Prisma\Decidir\Gateway\Validator\ValidatorPool">
         <arguments>
             <argument name="validators" xsi:type="array">
-                <item name="payment" xsi:type="object">\Prisma\Decidir\Gateway\Validator\PaymentValidator</item>
                 <item name="response" xsi:type="object">\Prisma\Decidir\Gateway\Validator\ResponseValidator</item>
+                <item name="retail" xsi:type="object">\Prisma\Decidir\Gateway\Validator\Cybersource\RetailValidator</item>
+                <item name="payment" xsi:type="object">\Prisma\Decidir\Gateway\Validator\PaymentValidator</item>
             </argument>
         </arguments>
     </type>

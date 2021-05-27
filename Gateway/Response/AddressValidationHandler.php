@@ -1,6 +1,6 @@
 <?php
 /**
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 namespace Prisma\Decidir\Gateway\Response;
 
@@ -31,6 +31,10 @@ class AddressValidationHandler implements HandlerInterface
      */
     private $reader;
 
+    /**
+     * AddressValidationHandler constructor.
+     * @param DataReader $reader
+     */
     public function __construct(
         DataReader $reader
     ) {

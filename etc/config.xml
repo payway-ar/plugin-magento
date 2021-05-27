@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
- *
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
@@ -37,6 +36,9 @@
                 <group>prisma_decidir</group>
                 <privateInfoKeys>token,bin</privateInfoKeys>
                 <paymentInfoKeys>cc_type,cc_exp_month,cc_exp_year,cc_number</paymentInfoKeys>
+                <cs_active>1</cs_active>
+                <cs_vertical>retail</cs_vertical>
+                <cs_region_source>magento_default</cs_region_source>
             </decidir>
         </payment>
     </default>
