@@ -1,7 +1,7 @@
 <?php
 /**
-*
-*/
+ * Copyright © IURCO and PRISMA. All rights reserved.
+ */
 declare(strict_types=1);
 
 namespace Prisma\Decidir\Model\Config\Source;
@@ -11,6 +11,9 @@ namespace Prisma\Decidir\Model\Config\Source;
 */
 class Installments
 {
+    /**
+     * @var string
+     */
     const MAX_INSTALLMENTS = 18;
 
     /**

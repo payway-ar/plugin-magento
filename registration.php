@@ -1,7 +1,6 @@
 <?php
 /**
- * @author    IURCO <magento@iurco.com>
- * @copyright 2021 IURCO. Todos los derechos reservados.
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 use Magento\Framework\Component\ComponentRegistrar;
 

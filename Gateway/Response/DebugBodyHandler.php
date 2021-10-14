@@ -1,6 +1,6 @@
 <?php
 /**
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 declare(strict_types=1);
 
@@ -20,6 +20,10 @@ class DebugBodyHandler implements HandlerInterface
      */
     private $reader;
 
+    /**
+     * DebugBodyHandler constructor.
+     * @param DataReader $reader
+     */
     public function __construct(
         DataReader $reader
     ) {

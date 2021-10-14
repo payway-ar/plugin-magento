@@ -1,6 +1,7 @@
 /**
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
+
 /**
  * Provides config values based on the current configuration mode
  */
@@ -16,14 +17,16 @@ define([], function () {
         getUrl: function() {
             return config.env.url;
         },
-
         /**
          * @returns string
          */
         getPublicKey: function() {
             return config.env.public_key;
         },
-
+        /**
+         *
+         * @returns bool
+         */
         isSandboxEnabled: function () {
             return config.env.is_sandbox
         },
@@ -81,7 +84,6 @@ define([], function () {
         getCvvImageUrl: function () {
             return config.cvv_image_url;
         },
-
         /**
          * Is legend available to display
          * @returns {Boolean}
@@ -106,5 +108,20 @@ define([], function () {
         getAvailableInstallments: function () {
             return config.installments;
         },
+        /**
+         * Get is CS (cybersource) enabled
+         * @returns bool
+         */
+        getIsCsActive: function() {
+            return config.is_cs_active;
+        },
+        /**
+         * Get selected CS (cybersource) vertical
+         * @returns bool
+         */
+        getSelectedVertical: function() {
+            return config.cs_vertical;
+        },
+
     }
 });

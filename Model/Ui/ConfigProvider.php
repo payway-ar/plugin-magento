@@ -1,7 +1,6 @@
 <?php
 /**
- *
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 namespace Prisma\Decidir\Model\Ui;
 
@@ -89,7 +88,9 @@ class ConfigProvider implements ConfigProviderInterface
                     'has_verification' => $this->hasVerification(),
                     'cvv_image_url' => $this->getCvvImageUrl(),
                     'icons' => $this->getIcons(),
-                    'installments' => $this->getCcAvailableInstallments()
+                    'installments' => $this->getCcAvailableInstallments(),
+                    'is_cs_active' => $this->config->isCsActive(),
+                    'cs_vertical' => $this->config->getSelectedCsVertical()
                 ]
             ]
         ];
@@ -243,4 +244,5 @@ class ConfigProvider implements ConfigProviderInterface
         return $installments = explode(',', $installments);
 
     }
+
 }

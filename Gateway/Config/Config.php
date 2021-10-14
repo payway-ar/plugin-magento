@@ -1,8 +1,9 @@
 <?php
 /**
- *
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
+declare(strict_types=1);
+
 namespace Prisma\Decidir\Gateway\Config;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -14,7 +15,7 @@ use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Payment\Model\InfoInterface;
 use Magento\Quote\Api\Data\CartInterface;
 use Magento\Store\Model\ScopeInterface;
-use PayPal\Braintree\Model\StoreConfigResolver;
+use Prisma\Decidir\Model\StoreConfigResolver;
 use Prisma\Decidir\Model\Config as ModuleConfig;
 
 /**
@@ -42,6 +43,9 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     const XPATH_PRODUCTION_PUBLIC_KEY = 'production_public_key';
     const XPATH_PRODUCTION_PRIVATE_KEY = 'production_private_key';
     const XPATH_PRODUCTION_JS_URL = 'production_js_url';
+    const XPATH_CS_ACTIVE = 'cs_active';
+    const XPATH_CS_VERTICALS = 'cs_vertical';
+    const XPATH_CS_REGION_SOURCE = 'cs_region_source';
 
     /**
      * @var StoreConfigResolver
@@ -59,8 +63,14 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     private $scopeConfig;
 
     /**
+     * @var ModuleConfig
+     */
+    private $moduleConfig;
+
+    /**
      * @param StoreConfigResolver $storeConfigResolver
      * @param ScopeConfigInterface $scopeConfig
+     * @param ModuleConfig $moduleConfig
      * @param null $methodCode
      * @param string $pathPattern
      * @param Json|null $serializer
@@ -68,6 +78,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     public function __construct(
         StoreConfigResolver $storeConfigResolver,
         ScopeConfigInterface $scopeConfig,
+        ModuleConfig $moduleConfig,
         $methodCode = null,
         $pathPattern = self::DEFAULT_PATH_PATTERN,
         Json $serializer = null
@@ -75,6 +86,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
         parent::__construct($scopeConfig, $methodCode, $pathPattern);
         $this->scopeConfig = $scopeConfig;
         $this->storeConfigResolver = $storeConfigResolver;
+        $this->moduleConfig = $moduleConfig;
         $this->serializer = $serializer ?: ObjectManager::getInstance()
             ->get(Json::class);
     }
@@ -378,6 +390,49 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     {
         return $this->getValue(
             self::XPATH_INSTALLMENTS,
+            $this->storeConfigResolver->getStoreId()
+        );
+    }
+
+    /**
+     * Is CS (cybersource) active
+     *
+     * @param int | null $storeId
+     * @return bool
+     */
+    public function isCsActive(int $storeId = null): bool
+    {
+        return $this->moduleConfig->getConfigFlag(
+            self::XPATH_CS_ACTIVE,
+            $storeId ?? $this->storeConfigResolver->getStoreId()
+        );
+    }
+
+    /**
+     *
+     * Get Selected Vertical
+     *
+     * @return string
+     *
+     */
+    public function getSelectedCsVertical(): string
+    {
+        return $this->getValue(
+            self::XPATH_CS_VERTICALS,
+            $this->storeConfigResolver->getStoreId()
+        );
+    }
+
+    /**
+     *
+     * Get Selected Region Source
+     *
+     * @return string
+     */
+    public function getSelectedCsRegionSource(): string
+    {
+        return $this->getValue(
+            self::XPATH_CS_REGION_SOURCE,
             $this->storeConfigResolver->getStoreId()
         );
     }

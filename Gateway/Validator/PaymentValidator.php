@@ -1,6 +1,6 @@
 <?php
 /**
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 declare(strict_types=1);
 
@@ -13,6 +13,10 @@ use Magento\Payment\Gateway\Validator\ResultInterfaceFactory;
 use Prisma\Decidir\Gateway\Helper\DataReader;
 use Psr\Log\InvalidArgumentException;
 
+/**
+ * Class PaymentValidator
+ *
+ */
 class PaymentValidator extends AbstractValidator implements ValidatorInterface
 {
     /**

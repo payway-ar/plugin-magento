@@ -1,6 +1,6 @@
 <?php
 /**
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 declare(strict_types=1);
 
@@ -16,6 +16,9 @@ use Prisma\Decidir\Model\Config;
  */
 class CreditCardHandler implements HandlerInterface
 {
+    /**
+     * @var string
+     */
     const PAYMENT_METHOD_ID = 'payment_method_id';
 
     /**
@@ -28,6 +31,11 @@ class CreditCardHandler implements HandlerInterface
      */
     private $reader;
 
+    /**
+     * CreditCardHandler constructor.
+     * @param Config $config
+     * @param DataReader $reader
+     */
     public function __construct(
         Config $config,
         DataReader $reader
@@ -36,6 +44,10 @@ class CreditCardHandler implements HandlerInterface
         $this->reader = $reader;
     }
 
+    /**
+     * @param array $handlingSubject
+     * @param array $response
+     */
     public function handle(array $handlingSubject, array $response)
     {
         $object = $this->reader->readPayment($handlingSubject);
