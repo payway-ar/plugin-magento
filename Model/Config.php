@@ -1,6 +1,6 @@
 <?php
 /**
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 declare(strict_types=1);
 
@@ -8,6 +8,7 @@ namespace Prisma\Decidir\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Serialize\SerializerInterface;
+use Prisma\Decidir\Model\StoreConfigResolver;
 
 /**
  * General purpose configuration retrieval tool
@@ -38,6 +39,11 @@ class Config
     const XPATH_CYBERSOURCE_ENABLED = 'cybersource_enabled';
 
     /**
+     * @var StoreConfigResolver
+     */
+    private $storeConfigResolver;
+
+    /**
      * @var ScopeConfigInterface
      */
     private $config;
@@ -46,13 +52,16 @@ class Config
     private $json;
 
     /**
+     * @param StoreConfigResolver $storeConfigResolver
      * @param ScopeConfigInterface $scopeConfig
      * @param SerializerInterface $serialize
      */
     public function __construct(
+        StoreConfigResolver $storeConfigResolver,
         ScopeConfigInterface $scopeConfig,
         SerializerInterface $serialize
     ) {
+        $this->storeConfigResolver = $storeConfigResolver;
         $this->config = $scopeConfig;
         $this->json = $serialize;
     }
@@ -88,144 +97,165 @@ class Config
     /**
      * Whether module is enabled or not
      *
-     * @param null|int|string $storeId
      * @return bool
      */
-    public function isActive($storeId = null): bool
+    public function isActive(): bool
     {
-        return $this->getConfigFlag(self::XPATH_MODULE_ACTIVE, $storeId);
+        return $this->getConfigFlag(
+            self::XPATH_MODULE_ACTIVE,
+            $this->storeConfigResolver->getStoreId()
+        );
     }
 
     /**
-     * @param null|int|string $storeId
      * @return bool
      */
-    public function isProductionModeEnabled($storeId = null): bool
+    public function isProductionModeEnabled(): bool
     {
-        return $this->getConfigFlag(self::XPATH_MODULE_MODE, $storeId)
-            === $this->getConfigFlag(self::MODE_PRODUCTION, $storeId);
+        return $this->getConfigFlag(
+            self::XPATH_MODULE_MODE,
+            $this->storeConfigResolver->getStoreId()
+            )
+            === $this->getConfigFlag(
+                self::MODE_PRODUCTION,
+                $this->storeConfigResolver->getStoreId()
+            );
     }
 
     /**
-     * @param null|int|string $storeId
      * @return string
      */
-    public function getProductionPublicKey($storeId = null): string
+    public function getProductionPublicKey(): string
     {
-        return $this->getConfigValue(self::XPATH_PRODUCTION_PUBLIC_KEY, $storeId);
+        return $this->getConfigValue(
+            self::XPATH_PRODUCTION_PUBLIC_KEY,
+            $this->storeConfigResolver->getStoreId()
+        );
     }
 
     /**
-     * @param null|int|string $storeId
      * @return string
      */
-    public function getProductionPrivateKey($storeId = null): string
+    public function getProductionPrivateKey(): string
     {
-        return $this->getConfigValue(self::XPATH_PRODUCTION_PRIVATE_KEY, $storeId);
+        return $this->getConfigValue(
+            self::XPATH_PRODUCTION_PRIVATE_KEY,
+            $this->storeConfigResolver->getStoreId()
+        );
     }
 
     /**
      * Returns JS URL to be used as initializer of the JS SDK
      *
-     * @param null|int|string $storeId
      * @return string
      */
-    public function getProductionJsUrl($storeId = null): string
+    public function getProductionJsUrl(): string
     {
-        return $this->getConfigValue(self::XPATH_PRODUCTION_JS_URL, $storeId);
+        return $this->getConfigValue(
+            self::XPATH_PRODUCTION_JS_URL,
+            $this->storeConfigResolver->getStoreId()
+        );
     }
 
     /**
-     * @param null|int|string $storeId
      * @return bool
      */
-    public function isSandboxModeEnabled($storeId = null): bool
+    public function isSandboxModeEnabled(): bool
     {
-        return $this->getConfigFlag(self::XPATH_MODULE_MODE, $storeId)
-            === $this->getConfigFlag(self::MODE_SANDBOX, $storeId);
+        return $this->getConfigFlag(
+            self::XPATH_MODULE_MODE,
+                $this->storeConfigResolver->getStoreId()
+            )
+            === $this->getConfigFlag(
+                self::MODE_SANDBOX,
+                $this->storeConfigResolver->getStoreId()
+            );
     }
 
     /**
-     * @param null|int|string $storeId
      * @return string
      */
-    public function getSandboxPublicKey($storeId = null): string
+    public function getSandboxPublicKey(): string
     {
-        return $this->getConfigValue(self::XPATH_SANDBOX_PUBLIC_KEY, $storeId);
+        return $this->getConfigValue(
+            self::XPATH_SANDBOX_PUBLIC_KEY,
+            $this->storeConfigResolver->getStoreId()
+        );
     }
 
     /**
-     * @param null|int|string $storeId
      * @return string
      */
-    public function getSandboxPrivateKey($storeId = null): string
+    public function getSandboxPrivateKey(): string
     {
-        return $this->getConfigValue(self::XPATH_SANDBOX_PRIVATE_KEY, $storeId);
+        return $this->getConfigValue(
+            self::XPATH_SANDBOX_PRIVATE_KEY,
+            $this->storeConfigResolver->getStoreId()
+        );
     }
 
     /**
      * Returns JS URL to be used as initializer of the JS SDK
      *
-     * @param null|int|string $storeId
      * @return string
      */
-    public function getSandboxJsUrl($storeId = null): string
+    public function getSandboxJsUrl(): string
     {
-        return $this->getConfigValue(self::XPATH_SANDBOX_JS_URL, $storeId);
+        return $this->getConfigValue(
+            self::XPATH_SANDBOX_JS_URL,
+            $this->storeConfigResolver->getStoreId()
+        );
     }
 
     /**
-     * @param null|int|string $storeId
+
      * @return array
      */
-    public function getSandboxCredentials($storeId = null): array
+    public function getSandboxCredentials(): array
     {
         return [
-            self::CREDENTIALS_JS_URL => $this->getSandboxJsUrl($storeId),
-            self::CREDENTIALS_PUBLIC_KEY => $this->getSandboxPublicKey($storeId),
-            self::CREDENTIALS_PRIVATE_KEY => $this->getSandboxPrivateKey($storeId)
+            self::CREDENTIALS_JS_URL => $this->getSandboxJsUrl($this->storeConfigResolver->getStoreId()),
+            self::CREDENTIALS_PUBLIC_KEY => $this->getSandboxPublicKey($this->storeConfigResolver->getStoreId()),
+            self::CREDENTIALS_PRIVATE_KEY => $this->getSandboxPrivateKey($this->storeConfigResolver->getStoreId())
         ];
     }
 
     /**
-     * @param null|int|string $storeId
      * @return array
      */
-    public function getProductionCredentials($storeId = null): array
+    public function getProductionCredentials(): array
     {
         return [
-            self::CREDENTIALS_JS_URL => $this->getProductionJsUrl($storeId),
-            self::CREDENTIALS_PUBLIC_KEY => $this->getProductionPublicKey($storeId),
-            self::CREDENTIALS_PRIVATE_KEY => $this->getProductionPrivateKey($storeId)
+            self::CREDENTIALS_JS_URL => $this->getProductionJsUrl($this->storeConfigResolver->getStoreId()),
+            self::CREDENTIALS_PUBLIC_KEY => $this->getProductionPublicKey($this->storeConfigResolver->getStoreId()),
+            self::CREDENTIALS_PRIVATE_KEY => $this->getProductionPrivateKey($this->storeConfigResolver->getStoreId())
         ];
     }
 
     /**
      * Returns credentials depending on the currently configured mode
      *
-     * @param null|int|string $storeId
      * @return array
      */
-    public function getApiCredentials($storeId = null): array
+    public function getApiCredentials(): array
     {
-        if ($this->isSandboxModeEnabled($storeId)) {
-            return $this->getSandboxCredentials($storeId);
+        if ($this->isSandboxModeEnabled($this->storeConfigResolver->getStoreId())) {
+            return $this->getSandboxCredentials($this->storeConfigResolver->getStoreId());
         }
 
-        if ($this->isProductionModeEnabled($storeId)) {
-            return $this->getProductionCredentials($storeId);
+        if ($this->isProductionModeEnabled($this->storeConfigResolver->getStoreId())) {
+            return $this->getProductionCredentials($this->storeConfigResolver->getStoreId());
         }
     }
 
     /**
      * Returns credentials to be used for JS SDK in storefront
      *
-     * @param null $storeId
      * @return array
      */
-    public function getJsSDKCredentials($storeId = null): array
+    public function getJsSDKCredentials(): array
     {
-        $credentials = $this->getApiCredentials($storeId);
+        $credentials = $this->getApiCredentials($this->storeConfigResolver->getStoreId());
 
         // avoid exposing private key into the storefront
         unset($credentials[self::CREDENTIALS_PRIVATE_KEY]);
@@ -236,25 +266,29 @@ class Config
     /**
      * List of comma separated Credit Card type values
      *
-     * @param null|int|string $storeId
      * @return string
      */
-    public function getConfiguredCcTypes($storeId = null): string
+    public function getConfiguredCcTypes(): string
     {
-        return $this->getConfigValue(self::XPATH_CCTYPES, $storeId);
+        return $this->getConfigValue(
+            self::XPATH_CCTYPES,
+            $this->storeConfigResolver->getStoreId()
+        );
     }
 
     /**
      * Retrieve mapper between Magento and Decidir card types
      *
-     * @param null|string|int
      * @return array
      */
-    public function getCcTypesMapper($storeId): array
+    public function getCcTypesMapper(): array
     {
 
         $result = $this->json->unserialize(
-            $this->getConfigValue(self::XPATH_CCTYPES_MAPPER, $storeId)
+            $this->getConfigValue(
+                self::XPATH_CCTYPES_MAPPER,
+                $this->storeConfigResolver->getStoreId()
+            )
         );
 
         return is_array($result) ? $result : [];
@@ -264,12 +298,11 @@ class Config
      * Returns Decidir CC id based on Magento CC type
      *
      * @param string $type
-     * @param null|string|int $storeId
      * @return string
      */
-    public function getDecidirCcType(string $type, $storeId = null): string
+    public function getDecidirCcType(string $type): string
     {
-        $config = $this->getCcTypesMapper($storeId);
+        $config = $this->getCcTypesMapper($this->storeConfigResolver->getStoreId());
 
         return isset($config[$type])
             ? $config[$type]
@@ -280,23 +313,24 @@ class Config
      * Returns Magento CC type, based on Decidir CC id
      *
      * @param string $type
-     * @param null|string|int $storeId
      * @return string
      */
-    public function getMagentoCcType(string $type, $storeId = null): string
+    public function getMagentoCcType(string $type): string
     {
         return array_search(
             $type,
-            $this->getCcTypesMapper($storeId)
+            $this->getCcTypesMapper($this->storeConfigResolver->getStoreId())
         ) ?? '';
     }
 
     /**
-     * @param null|int|string $storeId
      * @return bool
      */
-    public function isCybersourceEnabled($storeId = null): bool
+    public function isCybersourceEnabled(): bool
     {
-        return $this->getConfigFlag(self::XPATH_CYBERSOURCE_ENABLED, $storeId);
+        return $this->getConfigFlag(
+            self::XPATH_CYBERSOURCE_ENABLED,
+            $this->storeConfigResolver->getStoreId()
+        );
     }
 }

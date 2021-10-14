@@ -1,7 +1,6 @@
 <?php
 /**
- *
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 declare(strict_types=1);
 
@@ -17,6 +16,7 @@ use Magento\Payment\Model\Method\Logger;
 use Psr\Log\LoggerInterface;
 
 /**
+ * Class AbstractTransaction
  *
  */
 abstract class AbstractTransaction implements ClientInterface

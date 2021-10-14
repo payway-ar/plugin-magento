@@ -1,13 +1,11 @@
 <?php
 /**
- *
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 declare(strict_types=1);
 
 namespace Prisma\Decidir\Gateway\Validator;
 
-use Decidir\Payment\PaymentResponse;
 use Magento\Payment\Gateway\Validator\AbstractValidator;
 use Magento\Payment\Gateway\Validator\ResultInterface;
 use Magento\Payment\Gateway\Validator\ResultInterfaceFactory;
@@ -45,14 +43,14 @@ class ValidatorPool extends AbstractValidator
     public function __construct(
         ResultInterfaceFactory $factory,
         DataReader $reader,
-        array $validators,
-        ManagerInterface $messageManager
+        ManagerInterface $messageManager,
+        array $validators
 
     ) {
         parent::__construct($factory);
         $this->reader = $reader;
-        $this->validators = $validators;
         $this->messageManager = $messageManager;
+        $this->validators = $validators;
     }
 
     /**

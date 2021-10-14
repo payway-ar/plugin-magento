@@ -1,6 +1,6 @@
 <?php
 /**
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 declare(strict_types=1);
 
@@ -23,6 +23,11 @@ class GeneralResponseValidator extends AbstractValidator
      */
     private $reader;
 
+    /**
+     * GeneralResponseValidator constructor.
+     * @param ResultInterfaceFactory $resultFactory
+     * @param DataReader $reader
+     */
     public function __construct(
         ResultInterfaceFactory $resultFactory,
         DataReader $reader
@@ -31,6 +36,10 @@ class GeneralResponseValidator extends AbstractValidator
         $this->reader = $reader;
     }
 
+    /**
+     * @param array $validationSubject
+     * @return ResultInterface
+     */
     public function validate(array $validationSubject): ResultInterface
     {
         $response = $this->reader->readResponse($validationSubject);

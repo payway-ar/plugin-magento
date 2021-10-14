@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <!--
 /**
+ * Copyright © IURCO and PRISMA. All rights reserved.
+ */
+
+/**
  * Gateway Http Client error codes
  *
  * Currently PDP SDK does not return the HTTP error code
@@ -27,7 +31,8 @@
         <message code="invalid_request_error" translate="true">Data provided is invalid</message>
         <message code="not_found_error" translate="true">Data provided was not found</message>
         <message code="api_error" translate="true">Unexpected API error</message>
-        <message code="repeated" translate="true">Gateway error. Try again later</message>
+        <message code="repeated" translate="true">Transaction already exists!</message>
+        <message code="missing" translate="true">Some values are missing</message>
 
         <!-- CCard error codes friendly message showed by ValidatorPool -->
         <message code="1" translate="true">Solicitar autorización telefónica</message>
@@ -72,5 +77,116 @@
         <message code="96" translate="true">Mal funcionamiento del sistema. Solicitar autorización telefónica</message>
         <message code="97" translate="true">Error en sistema host</message>
         <message code="98" translate="true">Deben imprimir la información Suministrada en el Campo ISO 63</message>
+
+        <!-- CS error mapping for rejected general decision-->
+        <message code="-1" translate="true">Some values are missing</message>
+        <!-- CS error mapping for rejected red decision-->
+        <message code="101" translate="true">Error al validar los datos, revise los mismos y vuelva a intentar.</message>
+        <message code="102" translate="true">Error al validar los datos, revise los mismos y vuelva a intentar.</message>
+        <message code="202" translate="true">Error al validar los datos, revise los mismos y vuelva a intentar.</message>
+        <message code="231" translate="true">Error al validar los datos, revise los mismos y vuelva a intentar.</message>
+        <message code="481" translate="true">Error al validar los datos, revise los mismos y vuelva a intentar.</message>
+        <!-- CS error mapping for rejected blue decision-->
+        <message code="150" translate="true">Cybersource no disponible. Intente nuevamnete más tarde.</message>
+        <message code="151" translate="true">Cybersource no disponible. Intente nuevamnete más tarde.</message>
+        <message code="152" translate="true">Cybersource no disponible. Intente nuevamnete más tarde.</message>
+        <message code="153" translate="true">Cybersource no disponible. Intente nuevamnete más tarde.</message>
+        <!-- CS error mapping for rejected black decision-->
+        <message code="10101" translate="true">Falta ingresar ciudad en dirección de facturación.</message>
+        <message code="10102" translate="true">Falta ingresar país en dirección de facturación.</message>
+        <message code="10103" translate="true">Falta ingresar id de cliente en dirección de facturación.</message>
+        <message code="10104" translate="true">Falta ingresar email en dirección de facturación.</message>
+        <message code="10105" translate="true">Falta ingresar nombre en dirección de facturación.</message>
+        <message code="10106" translate="true">Falta ingresar ip address en dirección de facturación.</message>
+        <message code="10107" translate="true">Falta ingresar apellido en dirección de facturación.</message>
+        <message code="10108" translate="true">Falta ingresar teléfono en dirección de facturación.</message>
+        <message code="10109" translate="true">Falta ingresar código postal en dirección de facturación.</message>
+        <message code="10110" translate="true">Falta ingresar estado/provincia en dirección de facturación.</message>
+        <message code="10111" translate="true">Falta ingresar dirección en dirección de facturación.</message>
+
+        <message code="10130" translate="true">Falta ingresar codigo en el/los productos.</message>
+        <message code="10132" translate="true">Falta ingresar nombre en el/los productos.</message>
+        <message code="10133" translate="true">Falta ingresar sku en el/los productos.</message>
+        <message code="10134" translate="true">Falta ingresar cantidad en el/los productos.</message>
+        <message code="10135" translate="true">Falta ingresar monto total en el/los productos.</message>
+        <message code="10136" translate="true">Falta ingresar precio unitario en el/los productos.</message>
+
+        <message code="10140" translate="true">Falta ingresar moneda en totales de la compra.</message>
+        <message code="10141" translate="true">Falta ingresar monto total en totales de la compra.</message>
+
+        <message code="10150" translate="true">Falta valor interno fingerprintId.</message>
+        <message code="10151" translate="true">Falta valor interno fingerprintRaw.</message>
+        <message code="10152" translate="true">Falta valor interno merchantId.</message>
+        <message code="10153" translate="true">Falta valor interno merchanteReference .</message>
+
+        <message code="10160" translate="true">Falta ingresar ciudad en dirección de envío.</message>
+        <message code="10161" translate="true">Falta ingresar país en dirección de envío.</message>
+        <message code="10162" translate="true">Falta ingresar email en dirección de envío.</message>
+        <message code="10163" translate="true">Falta ingresar nombre en dirección de envío.</message>
+        <message code="10164" translate="true">Falta ingresar apellido en dirección de envío.</message>
+        <message code="10165" translate="true">Falta ingresar teléfono en dirección de envío.</message>
+        <message code="10166" translate="true">Falta ingresar código postal en dirección de envío.</message>
+        <message code="10167" translate="true">Falta ingresar estado/provincia en dirección de envío.</message>
+        <message code="10168" translate="true">Falta ingresar dirección en dirección de envío.</message>
+
+        <message code="10170" translate="true">TravelData complete route error.</message>
+        <message code="10171" translate="true">TravelData journey error.</message>
+        <message code="10172" translate="true">TravelData departure route error.</message>
+
+        <message code="10380" translate="true">Airline data error.</message>
+
+        <message code="10302" translate="true">Valor inválido para país en dirección de facturación.</message>
+        <message code="10304" translate="true">Valor inválido para email en dirección de facturación.</message>
+        <message code="10305" translate="true">Valor inválido para nombre en dirección de facturación.</message>
+        <message code="10306" translate="true">Valor inválido para ip address en dirección de facturación.</message>
+        <message code="10307" translate="true">Valor inválido para apellido en dirección de facturación.</message>
+        <message code="10309" translate="true">Valor inválido para código postal en dirección de facturación.</message>
+        <message code="10310" translate="true">Valor inválido para estado/provincia en dirección de facturación.</message>
+
+        <message code="10320" translate="true">Valor inválido para número de tarjeta.</message>
+        <message code="10321" translate="true">Valor inválido para tipo de tarjeta.</message>
+        <message code="10322" translate="true">Valor inválido para mes de vencimiento de tarjeta.</message>
+        <message code="10323" translate="true">Valor inválido para año de vencimiento de tarjeta.</message>
+
+        <message code="10334" translate="true">Valor inválido para cantidad en el/los productos.</message>
+        <message code="10335" translate="true">Valor inválido para el monto total en el/los productos.</message>
+        <message code="10336" translate="true">Valor inválido para el monto unitario en el/los productos.</message>
+
+        <message code="10340" translate="true">Valor inválido para la moneda en totales de la compra.</message>
+        <message code="10341" translate="true">Valor inválido para el monto en totales de la compra.</message>
+
+        <message code="10360" translate="true">Valor inválido para ciudad en dirección de envío.</message>
+        <message code="10361" translate="true">Valor inválido para  país en dirección de envío.</message>
+        <message code="10362" translate="true">Valor inválido para  email en dirección de envío.</message>
+        <message code="10363" translate="true">Valor inválido para  nombre en dirección de envío.</message>
+        <message code="10364" translate="true">Valor inválido para  apellido en dirección de envío.</message>
+        <message code="10365" translate="true">Valor inválido para  teléfono en dirección de envío.</message>
+        <message code="10366" translate="true">Valor inválido para  código postal en dirección de envío.</message>
+        <message code="10367" translate="true">Valor inválido para  estado/provincia en dirección de envío.</message>
+        <message code="10368" translate="true">Valor inválido para  dirección en dirección de envío.</message>
+
+        <message code="10370" translate="true">Invalid TravelData complete route error.</message>
+        <message code="10371" translate="true">Invalid TravelData journey error.</message>
+        <message code="10372" translate="true">Invalid TravelData departure route error.</message>
+
+        <message code="10380" translate="true">Invalid Airline data error.</message>
+
+        <message code="10501" translate="true">Merchant Affiliation Number(MDD1) is required.</message>
+        <message code="10502" translate="true">Merchant Name(MDD2) is required.</message>
+        <message code="10503" translate="true">Business Vertical(MDD3) is required.</message>
+
+        <message code="10517" translate="true">Travel Additional Fields MDD17- Reservation Code (PNR) is required.</message>
+        <message code="10518" translate="true">Travel Additional Fields MDD18-3rd Party Booking is required.</message>
+        <message code="10528" translate="true">Services Additional Fields MDD28- Service Type is required.</message>
+        <message code="10532" translate="true">Digital Goods Additional Fields MDD32-Delivery Type is required.</message>
+        <message code="10533" translate="true">Ticketing Additional Fields MDD33- Numero de dias para evento is required.</message>
+        <message code="10534" translate="true">Ticketing Additional Fields MDD34-Delivery Type is required.</message>
+
+        <message code="10701" translate="true">Invalid Merchant Affiliation Number(MDD1).</message>
+        <message code="10703" translate="true">Invalid Business Vertical(MDD3).</message>
+
+        <message code="10718" translate="true">Invalid Travel Additional Fields MDD18-3rd Party Booking.</message>
+        <message code="10733" translate="true">Invalid Ticketing Additional Fields MDD33- Numero de dias para evento.</message>
+
     </message_list>
 </mapping>

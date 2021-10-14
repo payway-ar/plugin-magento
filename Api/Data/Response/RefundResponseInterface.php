@@ -1,6 +1,6 @@
 <?php
 /**
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 declare(strict_types=1);
 
@@ -12,9 +12,18 @@ namespace Prisma\Decidir\Api\Data\Response;
  */
 interface RefundResponseInterface
 {
+    /**
+     * @var string
+     */
     const ID = 'id';
 
+    /**
+     * @var string
+     */
     const STATUS = 'status';
 
+    /**
+     * @var string
+     */
     const AMOUNT = 'amount';
 }

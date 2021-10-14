@@ -1,7 +1,6 @@
 <?php
 /**
- *
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 namespace Prisma\Decidir\Block;
 
@@ -66,31 +65,4 @@ class Form extends Cc
         $this->gatewayConfig = $gatewayConfig;
         $this->logger = $logger;
     }
-
-    /**
-     * Get list of available card types of order billing address country
-     *
-     * @inheritDoc
-     */
-//    public function getCcAvailableTypes(): array
-//    {
-//        try {
-//            return $this->getConfiguredCardTypes();
-//        } catch (InputException | NoSuchEntityException $e) {
-//            $this->logger->critical($e->getMessage());
-//        }
-//
-//        return [];
-//    }
-
-    /**
-     * Get card types available for Braintree
-     * @return array
-     * @throws InputException
-     * @throws NoSuchEntityException
-     */
-//    private function getConfiguredCardTypes(): array
-//    {
-//        return explode(',', $this->gatewayConfig->getConfiguredCcTypes());
-//    }
 }

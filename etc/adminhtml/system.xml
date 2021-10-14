@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
- *
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
@@ -95,6 +94,44 @@
                     <depends>
                         <field id="*/*/active">1</field>
                     </depends>
+                </field>
+                <field id="cs_active" translate="label" type="select" sortOrder="200" showInDefault="1" showInWebsite="1" canRestore="1">
+                    <label>Cybersource Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
+                </field>
+                <field id="cs_vertical" translate="label" type="select" sortOrder="210" showInDefault="1" showInWebsite="1" canRestore="1">
+                    <label>Cybersource Vertical</label>
+                    <source_model>Prisma\Decidir\Model\Config\Source\CsVerticals</source_model>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                        <field id="*/*/cs_active">1</field>
+                    </depends>
+                </field>
+                <field id="cs_region_source" translate="label" type="select" sortOrder="220" showInDefault="1" showInWebsite="1" canRestore="1">
+                    <label>Select Region Code Source </label>
+                    <source_model>Prisma\Decidir\Model\Config\Source\RegionSource</source_model>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                        <field id="*/*/cs_active">1</field>
+                    </depends>
+                    <comment>Select your region code source to send in payment requests.</comment>
+                </field>
+                <field id="cs_regions_comment" type="label" translate="label comment" sortOrder="221" showInDefault="1">
+                    <label>Region Codes Information</label>
+                    <comment>
+                        <![CDATA[
+                            <p>Cybersource necesita valores específicos para identificar las distintas provincias de Argentina. Ver
+                            <a href="https://decidirv2.api-docs.io/1.0/tablas-de-referencia-e-informacion-para-el-implementador/zpLTePd4PeuPdDBHN"target="_blank">
+                            Tabla De Refencia
+                            </a>.<p>
+                             <p>Si ya tiene estos valores cargados en la tabla `directory_country_region` de su Magento, seleccione la opción Magento Default.</p>
+                             <p>Caso contrario, es recomendable instalar el modulo <a href="https://github.com/holamugar/module-argentina-regions" target="blank"> Mugar_ArgentinaRegions </a> con el cual éste modulo es compatible a la versión <strong> 2.0.3 </strong></p>
+                             Para mayor información referirse al <a href="https://github.com/decidir/dec_magento#regiones-argentinas" target="_blank"> README </a> del módulo.
+                        ]]>
+                    </comment>
                 </field>
             </group>
         </section>

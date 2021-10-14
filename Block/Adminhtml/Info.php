@@ -1,9 +1,6 @@
 <?php
 /**
- *
- * @author    IURCO <magento@iurco.com>
- * @copyright 2021 PRISMA. Todos los derechos reservados.
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 declare(strict_types=1);
 
@@ -28,11 +25,9 @@ class Info extends Cc
      *
      * @var \Magento\Payment\Model\Config
      */
-
     protected $_paymentConfig;
 
     /**
-     *
      * @var \Magento\Framework\App\State
      */
     protected $_state;
@@ -135,8 +130,11 @@ class Info extends Cc
 
         if ($this->_state->getAreaCode() == self::AREA_CODE_ADMIN) {
 
-            if ($this->getInfo()->getAdditionalInformation('status')) {
-                $data[(string)__('Status')] = sprintf('%s', $this->getInfo()->getAdditionalInformation('status'));
+            if ($ccStatus = $this->getInfo()->getCcStatus()) {
+                $data[(string)__('Status')] = sprintf('%s',$ccStatus);
+                if ($ccStatusDescription = $this->getInfo()->getCcStatusDescription()) {
+                    $data[(string)__('Status')] .= sprintf('%s', ' - ('. $ccStatusDescription .')');
+                }
             }
             if ($this->getCcExpMonth()) {
                 $data[(string)__('Cc Expiration Month')] = sprintf('%s', $this->getCcExpMonth());
@@ -153,6 +151,9 @@ class Info extends Cc
             }
             if ($ccAuthCode = $this->getInfo()->getAdditionalInformation('card_authorization_code')) {
                 $data[(string)__('Cc Auth Code')] = $ccAuthCode;
+            }
+            if ($ccSecureVerify = $this->getInfo()->getCcSecureVerify()) {
+                $data[(string)__('CS Decision')] = strtoupper($ccSecureVerify);
             }
 
         }

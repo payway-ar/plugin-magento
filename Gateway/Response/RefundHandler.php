@@ -1,6 +1,6 @@
 <?php
 /**
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 declare(strict_types=1);
 
@@ -26,6 +26,10 @@ class RefundHandler implements HandlerInterface
         $this->reader = $reader;
     }
 
+    /**
+     * @param array $handlingSubject
+     * @param array $response
+     */
     public function handle(array $handlingSubject, array $response)
     {
         $object = $this->reader->readPayment($handlingSubject);

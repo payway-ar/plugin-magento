@@ -1,7 +1,6 @@
 <?php
 /**
- *
- *
+ * Copyright © IURCO and PRISMA. All rights reserved.
  */
 declare(strict_types=1);
 
@@ -49,6 +48,12 @@ class ResponseValidator extends AbstractValidator
         'api_error' => 409
     ];
 
+    /**
+     * ResponseValidator constructor.
+     * @param ResultInterfaceFactory $factory
+     * @param DataReader $reader
+     * @param ErrorCodesProvider $errorProvider
+     */
     public function __construct(
         ResultInterfaceFactory $factory,
         DataReader $reader,
@@ -70,19 +75,6 @@ class ResponseValidator extends AbstractValidator
         $errorCodes = [];
 
         // @TODO add validation when response does not contain anything else than a message
-        /**
-         *   'response' =>
-         *       array (
-         *       'object' =>
-         *           Decidir\Payment\PaymentResponse::__set_state(array(
-         *               'dataResponse' =>
-         *                   array (
-         *                       'message' => 'You cannot consume this service',
-         *                   ),
-         *               'field_required' => NULL,
-         *           )),
-         *       ), ...
-         */
 
         // append the rest of the incoming error data
         if (isset($validationSubject['validation_errors'])) {
