@@ -38,23 +38,11 @@ class AmountDataBuilder implements BuilderInterface
     {
         $payment = $this->reader->readPayment($buildSubject);
         $order = $payment->getOrder();
-
-        $amount = $this->parseGrandTotal($order->getGrandTotalAmount());
+       // send amount as float, decidir will handle decimals
+        $amount = $order->getGrandTotalAmount();
 
         return [
             self::AMOUNT => $amount
         ];
-    }
-
-    /**
-     * Gateway accepts only integers
-     * will infer last two digits as decimals
-     *
-     * @param float $amount
-     * @return int
-     */
-    public function parseGrandTotal(float $amount): int
-    {
-        return (int) str_replace(",", "", str_replace(".", "", $amount));
     }
 }

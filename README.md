@@ -3,12 +3,16 @@
 ## M2 Versiones soportadas
 * Magento 2.4+
 
+## Decidir PHP-SDK version soportada
+* 1.5.6
+
 ## Instalación
 ### Descarga
 1. Descargar módulo desde
     - [github](https://github.com/decidir/dec_magento)
 2. Crear el siguiente path/directorio `app/code/Prisma/Decidir/`
 3. Descomprimir y copiar el contenido del module en `app/code/Prisma/Decidir/`
+4. Instalar `decidir2/php-sdk` ejecutando `composer require decidir2/php-sdk:1.5.6`
 4. Ejecutar `bin/magento module:enable Prisma_Decidir --clear-static-content`
 5. Ejecutar `bin/magento setup:di:compile`
 6. Ejecutar `bin/magento setup:static-content:deploy`
