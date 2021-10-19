@@ -12,7 +12,6 @@ use Magento\Payment\Gateway\Validator\AbstractValidator;
 use Magento\Payment\Gateway\Validator\ResultInterface;
 use Magento\Payment\Gateway\Validator\ResultInterfaceFactory;
 use Prisma\Decidir\Gateway\Helper\DataReader;
-use Psr\Log\InvalidArgumentException;
 use Prisma\Decidir\Gateway\Config\CybersourceConfig;
 
 /**

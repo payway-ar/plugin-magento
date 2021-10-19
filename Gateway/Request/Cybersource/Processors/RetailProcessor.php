@@ -69,6 +69,11 @@ class RetailProcessor implements CybersourceProcessorInterface
      */
     public function process(OrderAdapter $order): array
     {
+        // validate if shipping address exists due virtual products
+        $shippingAddress = $order->getShippingAddress()
+            ? $order->getShippingAddress()
+            : $order->getBillingAddress();
+
         $result[CybersourceProcessorInterface::FRAUD_DETECTION] = [
             'send_to_cs' => CybersourceProcessorInterface::SEND_TO_CS,
             'channel' => CybersourceProcessorInterface::CHANNEL,
@@ -77,7 +82,7 @@ class RetailProcessor implements CybersourceProcessorInterface
             'purchase_totals' => $this->getPurchaseTotals($order),
             'customer_in_site' => $this->getCustomerInSite($order->getCustomerId(), $order->getBillingAddress()),
             'retail_transaction_data' => $this->getRetailTransactionData(
-                $this->getShipTo($order->getShippingAddress(),  $order->getCustomerId()),
+                $this->getShipTo($shippingAddress,  $order->getCustomerId()),
                 $order,
                 $this->getItems($order)
             )

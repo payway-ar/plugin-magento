@@ -55,10 +55,12 @@ class CybersourceBuilderPool implements BuilderInterface
      */
     public function build(array $buildSubject): array
     {
-
-        $payment = $this->reader->readPayment($buildSubject);
-
         $result = [];
+        if (!$this->csConfig->isCsActive()) {
+            return $result;
+        }
+        $payment = $this->reader->readPayment($buildSubject);
+        
         /** @var OrderAdapter $order */
         $order = $payment->getOrder();
         foreach ($this->processors as $processor) {
