@@ -9,11 +9,7 @@ namespace Prisma\Decidir\Gateway\Validator;
 use Magento\Payment\Gateway\Validator\AbstractValidator;
 use Magento\Payment\Gateway\Validator\ResultInterface;
 use Magento\Payment\Gateway\Validator\ResultInterfaceFactory;
-use Magento\Setup\Exception;
-use Prisma\Decidir\Gateway\Helper\DataReader;
-use Psr\Log\InvalidArgumentException;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Message\ManagerInterface;
+use Prisma\Decidir\Model\ResultProvider;
 
 /**
  * Validates response coming from the Gateway
@@ -21,35 +17,30 @@ use Magento\Framework\Message\ManagerInterface;
 class ValidatorPool extends AbstractValidator
 {
     /**
-     * @var DataReader $reader
+     * @var ResultProvider $resultProvider
      */
-    private $reader;
+    private $resultProvider;
+
     /**
      * @var array $validators
      */
     private array $validators;
-    /**
-     * @var ManagerInterface $messageManager
-     */
-    private ManagerInterface $messageManager;
+
 
     /**
      * MainValidator constructor.
      * @param ResultInterfaceFactory $factory
-     * @param DataReader $reader
+     * @param ResultProvider $resultProvider
      * @param array $validators
-     * @param ManagerInterface $messageManager
      */
     public function __construct(
         ResultInterfaceFactory $factory,
-        DataReader $reader,
-        ManagerInterface $messageManager,
+        ResultProvider $resultProvider,
         array $validators
 
     ) {
         parent::__construct($factory);
-        $this->reader = $reader;
-        $this->messageManager = $messageManager;
+        $this->resultProvider = $resultProvider;
         $this->validators = $validators;
     }
 
@@ -59,17 +50,10 @@ class ValidatorPool extends AbstractValidator
      */
     public function validate(array $validationSubject): ResultInterface
     {
-        $isValid = true;
-        $response = $this->reader->readResponse($validationSubject);
-
-        // @TODO create a result provider to avoid this type of nasty workarounds
         // depending on how it fails, SDK returns different signature
         // this normalizes that, use case: repeated token error
-        if (isset($response['object'])) {
-            $response = $response['object'];
-        }
-
-        $response = is_array($response) ? $response : $response->getDataField();
+        $response = $this->resultProvider->normalizeResponse($validationSubject);
+        $isValid = true;
 
         foreach ($this->validators as $validator) {
             $result = $validator->validate($response);
