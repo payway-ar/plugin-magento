@@ -52,4 +52,25 @@ interface RestClientInterface
      * @var int[]
      */
     const SUCCESS_STATUS_CODES = [200, 201, 204];
+
+    /**
+     * Value to set transaction platform origin service
+     *
+     * @var string
+     */
+    const CONNECTOR_SERVICE = 'SDK-PHP-IURCO-MAGENTO';
+
+    /**
+     * Value to set transaction platform origin developer
+     *
+     * @var string
+     */
+    const CONNECTOR_DEVELOPER = 'IURCO - Prisma SA';
+
+    /**
+     * Value to set transaction platform origin grouper
+     *
+     * @var string
+     */
+    const CONNECTOR_GROUPER = 'MG-Gateway-DECIDIR';
 }
