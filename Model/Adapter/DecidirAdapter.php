@@ -94,7 +94,10 @@ class DecidirAdapter
     {
         $this->connector = new Connector(
             $this->credentials,
-            $this->type
+            $this->type,
+            RestClientInterface::CONNECTOR_DEVELOPER,
+            RestClientInterface::CONNECTOR_GROUPER,
+            RestClientInterface::CONNECTOR_SERVICE
         );
 
         return $this;

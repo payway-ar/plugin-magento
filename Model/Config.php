@@ -276,52 +276,6 @@ class Config
         );
     }
 
-    /**
-     * Retrieve mapper between Magento and Decidir card types
-     *
-     * @return array
-     */
-    public function getCcTypesMapper(): array
-    {
-
-        $result = $this->json->unserialize(
-            $this->getConfigValue(
-                self::XPATH_CCTYPES_MAPPER,
-                $this->storeConfigResolver->getStoreId()
-            )
-        );
-
-        return is_array($result) ? $result : [];
-    }
-
-    /**
-     * Returns Decidir CC id based on Magento CC type
-     *
-     * @param string $type
-     * @return string
-     */
-    public function getDecidirCcType(string $type): string
-    {
-        $config = $this->getCcTypesMapper($this->storeConfigResolver->getStoreId());
-
-        return isset($config[$type])
-            ? $config[$type]
-            : '';
-    }
-
-    /**
-     * Returns Magento CC type, based on Decidir CC id
-     *
-     * @param string $type
-     * @return string
-     */
-    public function getMagentoCcType(string $type): string
-    {
-        return array_search(
-            $type,
-            $this->getCcTypesMapper($this->storeConfigResolver->getStoreId())
-        ) ?? '';
-    }
 
     /**
      * @return bool

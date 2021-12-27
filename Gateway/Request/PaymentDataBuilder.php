@@ -76,28 +76,11 @@ class PaymentDataBuilder implements BuilderInterface
 
         $result[self::INSTALLMENTS] = $this->getDefaultInstallmentAmount($payment->getPayment());
 
-        $result[self::PAYMENT_METHOD_ID] = $this->getPaymentMethodId(
-            $payment->getPayment(),
-            $storeId
-        );
+        $result[self::PAYMENT_METHOD_ID] = $additional['cc_type'];
 
         $result[self::PAYMENT_TYPE] = $this->getPaymentType();
 
         return $result;
-    }
-
-    /**
-     * Converts Magento CC type into Decidir payment code
-     *
-     * @param InfoInterface $payment
-     * @param null|string|int $storeId
-     * @return int
-     */
-    private function getPaymentMethodId(InfoInterface $payment, $storeId): int
-    {
-        $data = $payment->getAdditionalInformation();
-
-        return (int) $this->config->getDecidirCcType($data['cc_type'], $storeId);
     }
 
     /**
