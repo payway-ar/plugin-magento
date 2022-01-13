@@ -90,7 +90,10 @@ class CybersourceHandler implements HandlerInterface
             $response = $this->getDataField($response);
 
             $fraudDetectionResponsePayload = json_encode($response[self::CS_FRAUD_DETECTION]);
-            $decision = $response[self::CS_FRAUD_DETECTION][self::STATUS][self::CS_DECISION];
+            $decision = isset($response[self::CS_FRAUD_DETECTION][self::STATUS][self::CS_DECISION])
+                ? $response[self::CS_FRAUD_DETECTION][self::STATUS][self::CS_DECISION]
+                : 'not informed by cybersource'
+            ;
 
             $payment->setCcSecureVerify($decision);
             $this->setCsFraudDetectionPayload($payment, $fraudDetectionResponsePayload);

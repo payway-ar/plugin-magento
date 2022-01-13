@@ -22,6 +22,16 @@ class CreditCardHandler implements HandlerInterface
     const PAYMENT_METHOD_ID = 'payment_method_id';
 
     /**
+     * @var string
+     */
+    const RESPONSE_CARD_BRAND = 'card_brand';
+
+    /**
+     * @var string
+     */
+    const RESPONSE_NO_CARD_MESSAGE = 'Card not informed by Decidir';
+
+    /**
      * @var Config $config
      */
     private $config;
@@ -60,12 +70,9 @@ class CreditCardHandler implements HandlerInterface
         $paymentResponse = $this->reader->readTransaction($response);
         $data = $paymentResponse->getDataField();
 
-        $payment->setCcType(
-            $this->getCreditCardType(
-                (string) $data[self::PAYMENT_METHOD_ID],
-                $storeId
-            )
-        );
+        $ccType = $data[self::RESPONSE_CARD_BRAND] ?? self::RESPONSE_NO_CARD_MESSAGE;
+
+        $payment->setCcType($ccType);
     }
 
     /**

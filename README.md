@@ -7,13 +7,12 @@
 * 1.5.6
 
 ## Instalación
-### Descarga
-1. Descargar módulo desde
-    - [github](https://github.com/decidir/dec_magento)
-2. Crear el siguiente path/directorio `app/code/Prisma/Decidir/`
-3. Descomprimir y copiar el contenido del module en `app/code/Prisma/Decidir/`
-4. Instalar `decidir2/php-sdk` ejecutando `composer require decidir2/php-sdk:1.5.6`
-4. Ejecutar `bin/magento module:enable Prisma_Decidir --clear-static-content`
+### Composer
+1. Ejecutar `composer require "prisma/module-decidir"`
+   - Instalará los modulos `Prisma_Decidir` y `Prisma_DecidirPromotions`
+2. Ejecutar `bin/magento module:enable Prisma_Decidir`
+3. Ejecutar `bin/magento module:enable Prisma_DecidirPromotions`
+4. Ejecutar `bin/magento setup:upgrade`
 5. Ejecutar `bin/magento setup:di:compile`
 6. Ejecutar `bin/magento setup:static-content:deploy`
 7. Ejecutar `bin/magento cache:clean`
@@ -33,7 +32,7 @@ Si las siguientes credenciales no funcionan, por favor referirse a la [official 
 |:-----------------------|:-------------|:--------------------|  
 | Enable/disable         | Yes/No       | Yes                 |  
 | Vertical               | Retail       | Retail              |  
-| Region Source          | Magento Default <br> MugAr ArgentinaRegions Module <br> Custom Regions | Magento Default|  
+| Region Source          | Magento Default <br> MugAr ArgentinaRegions Module | Magento Default|  
 
 
 #### Regiones Argentinas
@@ -91,6 +90,71 @@ Donde `en_US` es el locale, `888` es el region_id (este value se obtiene ejecuta
     - Este módulo inyecta todos los datos necesarios para las regiones Argentinas  en la tabla `directory_country_region`. <br>
     - Se obtendrá el código, cuyo formato es `AR-C`, y se procesará en la clase `Prisma\Decidir\Model\Utility\RegionHandler`, el method `parseMugarRegionCode($code)` retornará el valor procesado necesario para el Gateway.
 
+## Configuración Promociones
+
+- Bancos
+    - Promociones de Decidir -> Admimistrar Bancos
+      Aqui se darán de alta los Bancos pudiendo ingresar
+        - Habilitar Banco (siempre debe estar habilitado)
+        - Nombre del Banco
+        - Logo
+- Tarjetas de Crédito
+    - Promociones de Decidir -> Admimistrar Tarjetas de Crédito
+      Aqui se darán de alta las Tarjetas de Crédito pudiendo ingresar
+        - Habilitar Tarjeta (siempre debe estar habilitada)
+        - Nombre de la Tarjeta
+        - ID SPS -> ID de pago a enviar a Decidir
+        - ID NPS -> no utilizado actualmente
+        - Logo
+- Promociones / Planes de Cuotas
+    - Promociones de Decidir -> Admimistrar Promociones
+      Aqui se darán de alta las Promociones o Planes de Pago,
+      combinando Banco/Tarjeta,  pudiendo ingresar
+        - Habilitar Promoción
+        - Nombre de la Regla
+        - Tarjeta a la que aplicará
+        - Fecha de inicio de vigenta de la promoción
+        - Banco al que aplicará
+        - Prioridad
+        - Fecha de fin de vigenta de la promoción
+        - Días en los cuales estará vigente
+        - Websites a los que aplica
+        - Planes De cuotas
+            - Cuota -> Valor mostrado en front y utilizado para calcular el monto de la misma
+            - Coeficiente -> Intereses aplicables
+            - TEA -> Valor informativo Informativo
+            - CFT -> Valor informativo Informativo
+            - Cuota que se Envia -> Valor de la cuota utilizado para enviar a DECIDIR
+
+## Transaction Logs
+#### Save transaction logs 
+  Si se habilita esta opción, se guardara en la tabla `prisma_decidir_transaction_logs` el payload de la respuesta de DECIDIR e info relevante por cada transacción realizada.
+#### Enable Cleanup Logs Cron
+  Si se habilita esta opción, se ejecutara un cronjob que eliminará registros de la tabla `prisma_decidir_transaction_logs` de acuerdo a los dias configurados. <br>
+  ###### Importante:
+**_Si se habilita el guardado de logs es importante y recomendable habilitar este cron para limpiar registros y prevenir un oversize de la tabla_**
+#### Clean Transaction Logs Older Than
+  Esta opción permite seleccionar la antigüedad de los logs a mantener en la tabla mecionada en el punto anterior.
+
+---
+## Deshabilitar Módulos
+1. Ejecutar `bin/magento module:enable Prisma_DecidirPromotions`
+2. Ejecutar `bin/magento module:disable Prisma_Decidir`
+3. Ejecutar `bin/magento setup:upgrade`
+4. Ejecutar `bin/magento setup:di:compile`
+5. Ejecutar `bin/magento setup:static-content:deploy`
+6. Ejecutar `bin/magento cache:flush`
+
 ## Desinstalación
-1. Ejecutar `bin/magento module:disable Prisma_Decidir --clear-static-content`
-2. Remover path/directorio `Prisma/Decidir/` dentro de `app/code`
+1. Ejecutar `composer remove "prisma/module-decidir"`
+   
+*NOTA:*
+ 
+No se removerán tablas:
+- `prisma_decidir_promotions_bank`
+- `prisma_decidir_promotions_card`
+- `prisma_decidir_promotions_rules`
+- `prisma_decidir_transaction_logs`
+
+No se removerán los datos de:
+- `core_config_data`
