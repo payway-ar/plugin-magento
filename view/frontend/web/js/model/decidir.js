@@ -33,7 +33,8 @@ define([
                 {'name': 'card_expiration_year', 'value':formValues.cc_exp_year},
                 {'name': 'card_holder_name', 'value':formValues.card_holder_name},
                 {'name': 'card_holder_doc_type', 'value':formValues.card_holder_doc_type},
-                {'name': 'card_holder_doc_number', 'value':formValues.card_holder_doc_number}
+                {'name': 'card_holder_doc_number', 'value':formValues.card_holder_doc_number},
+                {'name': 'security_code', 'value':formValues.cc_cid}
             ];
 
         htmlInputList = document.createElement('div');
