@@ -8,7 +8,7 @@
     <system>
         <section id="payment" type="text" sortOrder="400" showInDefault="1" showInWebsite="1" showInStore="1">
             <group id="decidir" translate="label" type="text" sortOrder="700" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>PRISMA Decidir</label>
+                <label>PRISMA Payway</label>
                 <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Status</label>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
