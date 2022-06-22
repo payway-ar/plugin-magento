@@ -1,17 +1,17 @@
-# Prisma Decidir Magento 2
+# Payway Payment for Magento 2
 
 ## M2 Versiones soportadas
 * Magento 2.4+
 
-## Decidir PHP-SDK version soportada
+## Payway PHP-SDK version soportada
 * 1.5.6
 
 ## Instalación
 ### Composer
-1. Ejecutar `composer require "prisma/module-decidir"`
-   - Instalará los modulos `Prisma_Decidir` y `Prisma_DecidirPromotions`
-2. Ejecutar `bin/magento module:enable Prisma_Decidir`
-3. Ejecutar `bin/magento module:enable Prisma_DecidirPromotions`
+1. Ejecutar `composer require "prisma/module-payway"`
+   - Instalará los modulos `Prisma_Payway` y `Prisma_PaywayPromotions`
+2. Ejecutar `bin/magento module:enable Prisma_Payway`
+3. Ejecutar `bin/magento module:enable Prisma_PaywayPromotions`
 4. Ejecutar `bin/magento setup:upgrade`
 5. Ejecutar `bin/magento setup:di:compile`
 6. Ejecutar `bin/magento setup:static-content:deploy`
@@ -88,26 +88,26 @@ Donde `en_US` es el locale, `888` es el region_id (este value se obtiene ejecuta
   Si no tiene las regiones Argentinas en su Magento, recomendamos su instalación [module-argentina-regions](https://github.com/holamugar/module-argentina-regions).
     - Este módulo inyecta todos los datos necesarios para las regiones Argentinas  en la tabla `directory_country_region`. <br>
     - Este módulo inyecta todos los datos necesarios para las regiones Argentinas  en la tabla `directory_country_region`. <br>
-    - Se obtendrá el código, cuyo formato es `AR-C`, y se procesará en la clase `Prisma\Decidir\Model\Utility\RegionHandler`, el method `parseMugarRegionCode($code)` retornará el valor procesado necesario para el Gateway.
+    - Se obtendrá el código, cuyo formato es `AR-C`, y se procesará en la clase `Prisma\Payway\Model\Utility\RegionHandler`, el method `parseMugarRegionCode($code)` retornará el valor procesado necesario para el Gateway.
 
 ## Configuración Promociones
 
 - Bancos
-    - Promociones de Decidir -> Admimistrar Bancos
+    - Promociones de Payway -> Admimistrar Bancos
       Aqui se darán de alta los Bancos pudiendo ingresar
         - Habilitar Banco (siempre debe estar habilitado)
         - Nombre del Banco
         - Logo
 - Tarjetas de Crédito
-    - Promociones de Decidir -> Admimistrar Tarjetas de Crédito
+    - Promociones de Payway -> Admimistrar Tarjetas de Crédito
       Aqui se darán de alta las Tarjetas de Crédito pudiendo ingresar
         - Habilitar Tarjeta (siempre debe estar habilitada)
         - Nombre de la Tarjeta
-        - ID SPS -> ID de pago a enviar a Decidir
+        - ID SPS -> ID de pago a enviar a Payway
         - ID NPS -> no utilizado actualmente
         - Logo
 - Promociones / Planes de Cuotas
-    - Promociones de Decidir -> Admimistrar Promociones
+    - Promociones de Payway -> Admimistrar Promociones
       Aqui se darán de alta las Promociones o Planes de Pago,
       combinando Banco/Tarjeta,  pudiendo ingresar
         - Habilitar Promoción
@@ -124,13 +124,13 @@ Donde `en_US` es el locale, `888` es el region_id (este value se obtiene ejecuta
             - Coeficiente -> Intereses aplicables
             - TEA -> Valor informativo Informativo
             - CFT -> Valor informativo Informativo
-            - Cuota que se Envia -> Valor de la cuota utilizado para enviar a DECIDIR
+            - Cuota que se Envia -> Valor de la cuota utilizado para enviar a Payway
 
 ## Transaction Logs
 #### Save transaction logs 
-  Si se habilita esta opción, se guardara en la tabla `prisma_decidir_transaction_logs` el payload de la respuesta de DECIDIR e info relevante por cada transacción realizada.
+  Si se habilita esta opción, se guardara en la tabla `prisma_payway_transaction_logs` el payload de la respuesta de Payway e info relevante por cada transacción realizada.
 #### Enable Cleanup Logs Cron
-  Si se habilita esta opción, se ejecutara un cronjob que eliminará registros de la tabla `prisma_decidir_transaction_logs` de acuerdo a los dias configurados. <br>
+  Si se habilita esta opción, se ejecutara un cronjob que eliminará registros de la tabla `prisma_payway_transaction_logs` de acuerdo a los dias configurados. <br>
   ###### Importante:
 **_Si se habilita el guardado de logs es importante y recomendable habilitar este cron para limpiar registros y prevenir un oversize de la tabla_**
 #### Clean Transaction Logs Older Than
@@ -138,23 +138,23 @@ Donde `en_US` es el locale, `888` es el region_id (este value se obtiene ejecuta
 
 ---
 ## Deshabilitar Módulos
-1. Ejecutar `bin/magento module:enable Prisma_DecidirPromotions`
-2. Ejecutar `bin/magento module:disable Prisma_Decidir`
+1. Ejecutar `bin/magento module:enable Prisma_PaywayPromotions`
+2. Ejecutar `bin/magento module:disable Prisma_Payway`
 3. Ejecutar `bin/magento setup:upgrade`
 4. Ejecutar `bin/magento setup:di:compile`
 5. Ejecutar `bin/magento setup:static-content:deploy`
 6. Ejecutar `bin/magento cache:flush`
 
 ## Desinstalación
-1. Ejecutar `composer remove "prisma/module-decidir"`
+1. Ejecutar `composer remove "prisma/module-payway"`
    
 *NOTA:*
  
 No se removerán tablas:
-- `prisma_decidir_promotions_bank`
-- `prisma_decidir_promotions_card`
-- `prisma_decidir_promotions_rules`
-- `prisma_decidir_transaction_logs`
+- `prisma_payway_promotions_bank`
+- `prisma_payway_promotions_card`
+- `prisma_payway_promotions_rules`
+- `prisma_payway_transaction_logs`
 
 No se removerán los datos de:
 - `core_config_data`
