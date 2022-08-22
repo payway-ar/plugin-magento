@@ -4,7 +4,7 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Gateway\Http\Client;
+namespace Prisma\Payway\Gateway\Http\Client;
 
 /**
  * Execute a Capture gateway command

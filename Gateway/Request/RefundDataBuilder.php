@@ -4,14 +4,14 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Gateway\Request;
+namespace Prisma\Payway\Gateway\Request;
 
 use InvalidArgumentException;
 use Magento\Payment\Gateway\Request\BuilderInterface;
 use Magento\Sales\Api\Data\TransactionInterface;
 use Magento\Sales\Model\Order\Payment;
-use Prisma\Decidir\Api\Data\Request\RefundDataInterface;
-use Prisma\Decidir\Gateway\Helper\DataReader;
+use Prisma\Payway\Api\Data\Request\RefundDataInterface;
+use Prisma\Payway\Gateway\Helper\DataReader;
 use Psr\Log\LoggerInterface;
 
 /**

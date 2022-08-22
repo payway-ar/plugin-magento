@@ -4,7 +4,7 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Api\Data;
+namespace Prisma\Payway\Api\Data;
 
 /**
  * Gateway RegionSource
@@ -38,32 +38,32 @@ interface RegionSourceInterface
      *  @var string[]
      */
     CONST CUSTOM_REGIONS_MAPPER = [
-        'Buenos Aires' => 'B',
-        'Ciudad Autónoma de Buenos Aires' => 'C',
-        'CABA' => 'C',
-        'Catamarca' => 'K',
-        'Chaco' => 'H',
-        'Chubut' => 'U',
-        'Córdoba' => 'X',
-        'Corrientes' => 'W',
-        'Entre Ríos' => 'E',
-        'Formosa' => 'P',
-        'Jujuy' => 'Y',
-        'La Pampa' => 'L',
-        'La Rioja' => 'F',
-        'Mendoza' => 'M',
-        'Misiones' => 'N',
-        'Neuquén' => 'Q',
-        'Río Negro'=> 'R',
-        'Salta' => 'A',
-        'San Juan' => 'J',
-        'San Luis' => 'D',
-        'Santa Cruz' => 'Z',
-        'Santa Fe' => 'S',
-        'Santiago del Estero' => 'G',
-        'Tierra del Fuego' => 'V',
-        'Antártida e Islas del Atlántico Sur' => 'V',
-        'Tucumán' => 'T'
+        'Buenos Aires' => 'AR-B',
+        'Ciudad Autónoma de Buenos Aires' => 'AR-C',
+        'CABA' => 'AR-C',
+        'Catamarca' => 'AR-K',
+        'Chaco' => 'AR-H',
+        'Chubut' => 'AR-U',
+        'Córdoba' => 'AR-X',
+        'Corrientes' => 'AR-W',
+        'Entre Ríos' => 'AR-E',
+        'Formosa' => 'AR-P',
+        'Jujuy' => 'AR-Y',
+        'La Pampa' => 'AR-L',
+        'La Rioja' => 'AR-F',
+        'Mendoza' => 'AR-M',
+        'Misiones' => 'AR-N',
+        'Neuquén' => 'AR-Q',
+        'Río Negro'=> 'AR-R',
+        'Salta' => 'AR-A',
+        'San Juan' => 'AR-J',
+        'San Luis' => 'AR-D',
+        'Santa Cruz' => 'AR-Z',
+        'Santa Fe' => 'AR-S',
+        'Santiago del Estero' => 'AR-G',
+        'Tierra del Fuego' => 'AR-V',
+        'Antártida e Islas del Atlántico Sur' => 'AR-V',
+        'Tucumán' => 'AR-T'
     ];
 
 

@@ -4,9 +4,9 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Gateway\Http\Client;
+namespace Prisma\Payway\Gateway\Http\Client;
 
-use Prisma\Decidir\Api\Data\Request\RefundDataInterface;
+use Prisma\Payway\Api\Data\Request\RefundDataInterface;
 
 /**
  * Executes a Refund Gateway operation

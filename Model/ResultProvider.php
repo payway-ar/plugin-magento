@@ -4,9 +4,9 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Model;
+namespace Prisma\Payway\Model;
 
-use Prisma\Decidir\Gateway\Helper\DataReader;
+use Prisma\Payway\Gateway\Helper\DataReader;
 
 /**
  * Validates response coming from the Gateway

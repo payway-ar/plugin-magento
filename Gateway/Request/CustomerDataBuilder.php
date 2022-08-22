@@ -4,11 +4,11 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Gateway\Request;
+namespace Prisma\Payway\Gateway\Request;
 
 use Magento\Payment\Gateway\Request\BuilderInterface;
 use PayPal\Braintree\Gateway\Data\Order\OrderAdapter;
-use Prisma\Decidir\Gateway\Helper\DataReader;
+use Prisma\Payway\Gateway\Helper\DataReader;
 
 /**
  * Provides Customer data to the request

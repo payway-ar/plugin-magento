@@ -4,7 +4,7 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Block\Adminhtml;
+namespace Prisma\Payway\Block\Adminhtml;
 
 use Magento\Payment\Block\Info\Cc;
 use Magento\Framework\App\State;

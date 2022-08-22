@@ -4,7 +4,7 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Api\Data\Response;
+namespace Prisma\Payway\Api\Data\Response;
 
 /**
  * Interface for Refund and Void response operations

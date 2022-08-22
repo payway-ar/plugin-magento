@@ -4,7 +4,7 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Gateway\Response;
+namespace Prisma\Payway\Gateway\Response;
 
 use Decidir\Payment\PaymentResponse;
 use InvalidArgumentException;
@@ -13,8 +13,8 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Payment\Gateway\Response\HandlerInterface;
 use Magento\Payment\Model\InfoInterface;
 use Magento\Sales\Api\Data\OrderPaymentInterface;
-use Prisma\Decidir\Gateway\Helper\DataReader;
-use Prisma\Decidir\Model\Config;
+use Prisma\Payway\Gateway\Helper\DataReader;
+use Prisma\Payway\Model\Config;
 
 /**
  * Assings all payment data related to the Payment entity

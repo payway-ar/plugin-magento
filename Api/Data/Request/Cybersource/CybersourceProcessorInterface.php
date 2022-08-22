@@ -4,7 +4,7 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Api\Data\Request\Cybersource;
+namespace Prisma\Payway\Api\Data\Request\Cybersource;
 
 use PayPal\Braintree\Gateway\Data\Order\OrderAdapter;
 

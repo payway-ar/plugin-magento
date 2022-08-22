@@ -4,9 +4,9 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Gateway\Validator;
+namespace Prisma\Payway\Gateway\Validator;
 
-use Prisma\Decidir\Api\Data\ErrorCodesInterface;
+use Prisma\Payway\Api\Data\ErrorCodesInterface;
 
 /**
  * Provides a list of errors

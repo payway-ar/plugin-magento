@@ -4,11 +4,11 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Model\Utility;
+namespace Prisma\Payway\Model\Utility;
 
 use Magento\Directory\Model\RegionFactory;
-use Prisma\Decidir\Gateway\Config\CybersourceConfig;
-use Prisma\Decidir\Api\Data\RegionSourceInterface;
+use Prisma\Payway\Gateway\Config\CybersourceConfig;
+use Prisma\Payway\Api\Data\RegionSourceInterface;
 use Magento\Framework\Module\Manager as ModuleManager;
 
 /**
@@ -72,7 +72,7 @@ class RegionHandler implements RegionSourceInterface
                 break;
             case RegionSourceInterface::MAGENTO_DEFAULT:
             default:
-                $code = $address->getRegionCode();
+                $code = substr($address->getRegionCode(), 3);
                 break;
         }
         return $code;
@@ -95,7 +95,7 @@ class RegionHandler implements RegionSourceInterface
     {
         $regionsArray = $this->getCustomRegionsArray();
         return isset($regionsArray[$customCode])
-            ? $regionsArray[$customCode]
+            ? substr($regionsArray[$customCode], 3)
             : $customCode;
     }
 

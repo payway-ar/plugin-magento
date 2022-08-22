@@ -4,7 +4,7 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Model\Config\Source;
+namespace Prisma\Payway\Model\Config\Source;
 
 /**
  * Provides CS Vertical list for backend configuration

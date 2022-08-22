@@ -4,7 +4,7 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Gateway\Request;
+namespace Prisma\Payway\Gateway\Request;
 
 use Magento\Payment\Gateway\Request\BuilderInterface;
 

@@ -4,12 +4,12 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Gateway\Response;
+namespace Prisma\Payway\Gateway\Response;
 
 use Magento\Payment\Gateway\Response\HandlerInterface;
 use Magento\Sales\Model\Order\Payment;
-use Prisma\Decidir\Gateway\Helper\DataReader;
-use Prisma\Decidir\Model\Config;
+use Prisma\Payway\Gateway\Helper\DataReader;
+use Prisma\Payway\Model\Config;
 
 /**
  * Retrieves the payment transaction id from the response
@@ -62,7 +62,7 @@ class TransactionIdHandler implements HandlerInterface
             // @TODO ensure for all other Gateway Commands there's always a transaction id
             if (!isset($data[self::FIELD_ID])) {
                 // request has failed given that
-                // we don't need a transaction id on Decidir side
+                // we don't need a transaction id on Payway side
                 return;
             }
 

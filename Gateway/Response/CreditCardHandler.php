@@ -4,12 +4,12 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Gateway\Response;
+namespace Prisma\Payway\Gateway\Response;
 
 use Magento\Payment\Gateway\Response\HandlerInterface;
 use Magento\Sales\Api\Data\OrderPaymentInterface;
-use Prisma\Decidir\Gateway\Helper\DataReader;
-use Prisma\Decidir\Model\Config;
+use Prisma\Payway\Gateway\Helper\DataReader;
+use Prisma\Payway\Model\Config;
 
 /**
  * Extracts Credit Card code from the transaction response
@@ -29,7 +29,7 @@ class CreditCardHandler implements HandlerInterface
     /**
      * @var string
      */
-    const RESPONSE_NO_CARD_MESSAGE = 'Card not informed by Decidir';
+    const RESPONSE_NO_CARD_MESSAGE = 'Card not informed by Payway';
 
     /**
      * @var Config $config
@@ -66,7 +66,7 @@ class CreditCardHandler implements HandlerInterface
         $payment = $object->getPayment();
         $storeId = $object->getOrder()->getStoreId();
 
-        // retrieve data coming from Decidir
+        // retrieve data coming from Payway
         $paymentResponse = $this->reader->readTransaction($response);
         $data = $paymentResponse->getDataField();
 

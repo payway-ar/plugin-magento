@@ -1,7 +1,7 @@
-# Prisma Decidir Magento 2
+# Prisma Payway Magento 2
 
 ## M2 Versiones soportadas
-* Magento 2.4+
+* Magento 2.4.2 | 2.4.3
 
 ## Decidir PHP-SDK version soportada
 * 1.5.6
@@ -9,9 +9,9 @@
 ## Instalación
 ### Composer
 1. Ejecutar `composer require "prisma/module-decidir"`
-   - Instalará los modulos `Prisma_Decidir` y `Prisma_DecidirPromotions`
-2. Ejecutar `bin/magento module:enable Prisma_Decidir`
-3. Ejecutar `bin/magento module:enable Prisma_DecidirPromotions`
+   - Instalará los modulos `Prisma_Payway` y `Prisma_PaywayPromotions`
+2. Ejecutar `bin/magento module:enable Prisma_Payway`
+3. Ejecutar `bin/magento module:enable Prisma_PaywayPromotions`
 4. Ejecutar `bin/magento setup:upgrade`
 5. Ejecutar `bin/magento setup:di:compile`
 6. Ejecutar `bin/magento setup:static-content:deploy`
@@ -50,30 +50,30 @@ Para insertar datos puede ejecutar el siguiente query
   ```  
   INSERT INTO directory_country_region (country_id, code, default_name)   
   VALUES  
- ("AR", "C", "Ciudad Autónoma De Buenos Aires")
-  ("AR", "B", "Buenos Aires"),
-  ("AR", "K", "Catamarca"),
-  ("AR", "H", "Chaco"),
-  ("AR", "U", "Chubut"),
-  ("AR", "X", "Córdoba"),
-  ("AR", "W", "Corrientes"),
-  ("AR", "E", "Entre Ríos"),
-  ("AR", "P", "Formosa"),
-  ("AR", "Y", "Jujuy"),
-  ("AR", "L", "La Pampa"),
-  ("AR", "F", "La Rioja"),
-  ("AR", "M", "Mendoza"),
-  ("AR", "N", "Misiones"),
-  ("AR", "Q", "Neuquén"),
-  ("AR", "R", "Río Negro"),
-  ("AR", "A", "Salta"),
-  ("AR", "J", "San Juan"),
-  ("AR", "D", "San Luis"),
-  ("AR", "Z", "Santa Cruz"),
-  ("AR", "S", "Santa Fe"),
-  ("AR", "G", "Santiago del Estero"),
-  ("AR", "V", "Tierra del Fuego"),
-  ("AR", "T", "Tucumán")
+ ("AR", "AR-C", "Ciudad Autónoma De Buenos Aires")
+  ("AR", "AR-B", "Buenos Aires"),
+  ("AR", "AR-K", "Catamarca"),
+  ("AR", "AR-H", "Chaco"),
+  ("AR", "AR-U", "Chubut"),
+  ("AR", "AR-X", "Córdoba"),
+  ("AR", "AR-W", "Corrientes"),
+  ("AR", "AR-E", "Entre Ríos"),
+  ("AR", "AR-P", "Formosa"),
+  ("AR", "AR-Y", "Jujuy"),
+  ("AR", "AR-L", "La Pampa"),
+  ("AR", "AR-F", "La Rioja"),
+  ("AR", "AR-M", "Mendoza"),
+  ("AR", "AR-N", "Misiones"),
+  ("AR", "AR-Q", "Neuquén"),
+  ("AR", "AR-R", "Río Negro"),
+  ("AR", "AR-A", "Salta"),
+  ("AR", "AR-J", "San Juan"),
+  ("AR", "AR-D", "San Luis"),
+  ("AR", "AR-Z", "Santa Cruz"),
+  ("AR", "AR-S", "Santa Fe"),
+  ("AR", "AR-G", "Santiago del Estero"),
+  ("AR", "AR-V", "Tierra del Fuego"),
+  ("AR", "AR-T", "Tucumán")
   ;
    ``` 
 *NOTA:*   
@@ -88,26 +88,26 @@ Donde `en_US` es el locale, `888` es el region_id (este value se obtiene ejecuta
   Si no tiene las regiones Argentinas en su Magento, recomendamos su instalación [module-argentina-regions](https://github.com/holamugar/module-argentina-regions).
     - Este módulo inyecta todos los datos necesarios para las regiones Argentinas  en la tabla `directory_country_region`. <br>
     - Este módulo inyecta todos los datos necesarios para las regiones Argentinas  en la tabla `directory_country_region`. <br>
-    - Se obtendrá el código, cuyo formato es `AR-C`, y se procesará en la clase `Prisma\Decidir\Model\Utility\RegionHandler`, el method `parseMugarRegionCode($code)` retornará el valor procesado necesario para el Gateway.
+    - Se obtendrá el código, cuyo formato es `AR-C`, y se procesará en la clase `Prisma\Payway\Model\Utility\RegionHandler`, el method `parseMugarRegionCode($code)` retornará el valor procesado necesario para el Gateway.
 
 ## Configuración Promociones
 
 - Bancos
-    - Promociones de Decidir -> Admimistrar Bancos
+    - Promociones de Payway -> Admimistrar Bancos
       Aqui se darán de alta los Bancos pudiendo ingresar
         - Habilitar Banco (siempre debe estar habilitado)
         - Nombre del Banco
         - Logo
 - Tarjetas de Crédito
-    - Promociones de Decidir -> Admimistrar Tarjetas de Crédito
+    - Promociones de Payway -> Admimistrar Tarjetas de Crédito
       Aqui se darán de alta las Tarjetas de Crédito pudiendo ingresar
         - Habilitar Tarjeta (siempre debe estar habilitada)
         - Nombre de la Tarjeta
-        - ID SPS -> ID de pago a enviar a Decidir
+        - ID SPS -> ID de pago a enviar a Payway
         - ID NPS -> no utilizado actualmente
         - Logo
 - Promociones / Planes de Cuotas
-    - Promociones de Decidir -> Admimistrar Promociones
+    - Promociones de Payway -> Admimistrar Promociones
       Aqui se darán de alta las Promociones o Planes de Pago,
       combinando Banco/Tarjeta,  pudiendo ingresar
         - Habilitar Promoción
@@ -138,8 +138,8 @@ Donde `en_US` es el locale, `888` es el region_id (este value se obtiene ejecuta
 
 ---
 ## Deshabilitar Módulos
-1. Ejecutar `bin/magento module:enable Prisma_DecidirPromotions`
-2. Ejecutar `bin/magento module:disable Prisma_Decidir`
+1. Ejecutar `bin/magento module:enable Prisma_PaywayPromotions`
+2. Ejecutar `bin/magento module:disable Prisma_Payway`
 3. Ejecutar `bin/magento setup:upgrade`
 4. Ejecutar `bin/magento setup:di:compile`
 5. Ejecutar `bin/magento setup:static-content:deploy`

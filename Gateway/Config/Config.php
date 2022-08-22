@@ -4,7 +4,7 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Gateway\Config;
+namespace Prisma\Payway\Gateway\Config;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\ObjectManager;
@@ -15,8 +15,8 @@ use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Payment\Model\InfoInterface;
 use Magento\Quote\Api\Data\CartInterface;
 use Magento\Store\Model\ScopeInterface;
-use Prisma\Decidir\Model\StoreConfigResolver;
-use Prisma\Decidir\Model\Config as ModuleConfig;
+use Prisma\Payway\Model\StoreConfigResolver;
+use Prisma\Payway\Model\Config as ModuleConfig;
 
 /**
  * Payment Configuration provider
@@ -126,13 +126,13 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     }
 
     /**
-     * Returns Decidir CC id based on Magento CC type
+     * Returns Payway CC id based on Magento CC type
      *
      * @param string $type
      * @param null|string|int $storeId
      * @return string
      */
-    public function getDecidirCcType(string $type, $storeId = null): string
+    public function getPaywayCcType(string $type, $storeId = null): string
     {
         $config = $this->getCcTypesMapper();
 
@@ -142,7 +142,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     }
 
     /**
-     * Returns Magento CC type, based on Decidir CC id
+     * Returns Magento CC type, based on Payway CC id
      *
      * @param string $type
      * @return string
