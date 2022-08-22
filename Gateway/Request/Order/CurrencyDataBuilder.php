@@ -4,9 +4,9 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Gateway\Request\Order;
+namespace Prisma\Payway\Gateway\Request\Order;
 
-use Prisma\Decidir\Gateway\Helper\DataReader;
+use Prisma\Payway\Gateway\Helper\DataReader;
 use Magento\Payment\Gateway\Request\BuilderInterface;
 
 /**

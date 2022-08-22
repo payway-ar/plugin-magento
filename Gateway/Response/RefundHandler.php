@@ -4,10 +4,10 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Gateway\Response;
+namespace Prisma\Payway\Gateway\Response;
 
 use Magento\Payment\Gateway\Response\HandlerInterface;
-use Prisma\Decidir\Gateway\Helper\DataReader;
+use Prisma\Payway\Gateway\Helper\DataReader;
 use Magento\Sales\Model\Order\Payment;
 
 class RefundHandler implements HandlerInterface

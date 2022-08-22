@@ -4,17 +4,17 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Gateway\Response;
+namespace Prisma\Payway\Gateway\Response;
 
 use Magento\Payment\Gateway\Response\HandlerInterface;
-use Prisma\Decidir\Gateway\Helper\DataReader;
+use Prisma\Payway\Gateway\Helper\DataReader;
 
 /**
  * Handler for Capture Gateway command
  */
 class CaptureHandler implements HandlerInterface
 {
-    const DEFAULT_TITLE = 'Prisma Decidir (Capture Handler)';
+    const DEFAULT_TITLE = 'Prisma Payway (Capture Handler)';
 
     /**
      * @var DataReader

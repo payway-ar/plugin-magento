@@ -4,11 +4,11 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Gateway\Config;
+namespace Prisma\Payway\Gateway\Config;
 
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Prisma\Decidir\Api\Data\RestClientInterface;
+use Prisma\Payway\Api\Data\RestClientInterface;
 
 /**
  * Isolates specific Connector's configuration values

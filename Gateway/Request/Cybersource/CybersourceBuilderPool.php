@@ -4,13 +4,13 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Gateway\Request\Cybersource;
+namespace Prisma\Payway\Gateway\Request\Cybersource;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Payment\Gateway\Request\BuilderInterface;
 use PayPal\Braintree\Gateway\Data\Order\OrderAdapter;
-use Prisma\Decidir\Gateway\Helper\DataReader;
-use Prisma\Decidir\Gateway\Config\CybersourceConfig;
+use Prisma\Payway\Gateway\Helper\DataReader;
+use Prisma\Payway\Gateway\Config\CybersourceConfig;
 use Magento\Sales\Model\OrderRepository;
 
 class CybersourceBuilderPool implements BuilderInterface
@@ -60,7 +60,7 @@ class CybersourceBuilderPool implements BuilderInterface
             return $result;
         }
         $payment = $this->reader->readPayment($buildSubject);
-        
+
         /** @var OrderAdapter $order */
         $order = $payment->getOrder();
         foreach ($this->processors as $processor) {

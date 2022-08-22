@@ -4,7 +4,7 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Api\Data\Validator\Cybersource;
+namespace Prisma\Payway\Api\Data\Validator\Cybersource;
 
 /**
  * Validate order cybersource interface

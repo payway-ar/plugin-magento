@@ -4,7 +4,7 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Api\Data\Request;
+namespace Prisma\Payway\Api\Data\Request;
 
 /**
  * Represents payload for a Refund request

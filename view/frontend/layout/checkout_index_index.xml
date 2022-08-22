@@ -21,10 +21,10 @@
                                                     <item name="children" xsi:type="array">
                                                         <item name="renders" xsi:type="array">
                                                             <item name="children" xsi:type="array">
-                                                                <item name="decidir-payments" xsi:type="array">
-                                                                    <item name="component" xsi:type="string">Prisma_Decidir/js/view/payment/decidir-payments</item>
+                                                                <item name="payway-payments" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">Prisma_Payway/js/view/payment/payway-payments</item>
                                                                     <item name="methods" xsi:type="array">
-                                                                        <item name="decidir" xsi:type="array">
+                                                                        <item name="payway" xsi:type="array">
                                                                             <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
                                                                         </item>
                                                                     </item>

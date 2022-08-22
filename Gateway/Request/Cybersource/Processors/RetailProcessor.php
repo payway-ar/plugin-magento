@@ -4,16 +4,16 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Gateway\Request\Cybersource\Processors;
+namespace Prisma\Payway\Gateway\Request\Cybersource\Processors;
 
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Model\OrderRepository;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use PayPal\Braintree\Gateway\Data\Order\OrderAdapter;
-use Prisma\Decidir\Api\Data\Request\Cybersource\CybersourceProcessorInterface;
+use Prisma\Payway\Api\Data\Request\Cybersource\CybersourceProcessorInterface;
 use Magento\Framework\Stdlib\DateTime\DateTime;
-use Prisma\Decidir\Model\Utility\RegionHandler;
+use Prisma\Payway\Model\Utility\RegionHandler;
 
 class RetailProcessor implements CybersourceProcessorInterface
 {

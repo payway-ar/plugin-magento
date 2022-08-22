@@ -4,9 +4,9 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Model\Config\Source;
+namespace Prisma\Payway\Model\Config\Source;
 
-use Prisma\Decidir\Model\Config;
+use Prisma\Payway\Model\Config;
 
 /**
  * Configuration Modes

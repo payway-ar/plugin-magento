@@ -7,7 +7,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
         <section id="payment" type="text" sortOrder="400" showInDefault="1" showInWebsite="1" showInStore="1">
-            <group id="decidir" translate="label" type="text" sortOrder="700" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="payway" translate="label" type="text" sortOrder="700" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>PRISMA Payway</label>
                 <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Status</label>
@@ -29,15 +29,15 @@
                 </field>
                 <field id="cctypes" translate="label" type="multiselect" sortOrder="30" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Available Credit Cards</label>
-                    <source_model>Prisma\Decidir\Model\Config\Source\CcTypes</source_model>
+                    <source_model>Prisma\Payway\Model\Config\Source\CcTypes</source_model>
                 </field>
                 <field id="installments" translate="label" type="multiselect" sortOrder="35" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Available Installments</label>
-                    <source_model>Prisma\Decidir\Model\Config\Source\Installments</source_model>
+                    <source_model>Prisma\Payway\Model\Config\Source\Installments</source_model>
                 </field>
                 <field id="module_mode" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1">
                     <label>Mode</label>
-                    <source_model>Prisma\Decidir\Model\Config\Source\ModuleModes</source_model>
+                    <source_model>Prisma\Payway\Model\Config\Source\ModuleModes</source_model>
                     <depends>
                         <field id="*/*/active">1</field>
                     </depends>
@@ -104,7 +104,7 @@
                 </field>
                 <field id="cs_vertical" translate="label" type="select" sortOrder="210" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Cybersource Vertical</label>
-                    <source_model>Prisma\Decidir\Model\Config\Source\CsVerticals</source_model>
+                    <source_model>Prisma\Payway\Model\Config\Source\CsVerticals</source_model>
                     <depends>
                         <field id="*/*/active">1</field>
                         <field id="*/*/cs_active">1</field>
@@ -112,7 +112,7 @@
                 </field>
                 <field id="cs_region_source" translate="label" type="select" sortOrder="220" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Select Region Code Source </label>
-                    <source_model>Prisma\Decidir\Model\Config\Source\RegionSource</source_model>
+                    <source_model>Prisma\Payway\Model\Config\Source\RegionSource</source_model>
                     <depends>
                         <field id="*/*/active">1</field>
                         <field id="*/*/cs_active">1</field>

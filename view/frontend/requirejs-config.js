@@ -4,12 +4,12 @@
 var config = {
     map: {
         '*': {
-            decidirApi: 'https://live.decidir.com/static/v2.5/decidir.js'
+            paywayApi: 'https://live.decidir.com/static/v2.5/decidir.js'
         }
     },
     mixins: {
         'mage/validation': {
-            'Prisma_Decidir/js/validation-mixin': true
+            'Prisma_Payway/js/validation-mixin': true
         }
     }
 };

@@ -4,7 +4,7 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Api\Data\Validator;
+namespace Prisma\Payway\Api\Data\Validator;
 
 use Magento\Payment\Gateway\Validator\ResultInterface;
 

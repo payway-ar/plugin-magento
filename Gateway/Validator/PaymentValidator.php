@@ -4,13 +4,13 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Gateway\Validator;
+namespace Prisma\Payway\Gateway\Validator;
 
-use Prisma\Decidir\Api\Data\Validator\ValidatorInterface;
+use Prisma\Payway\Api\Data\Validator\ValidatorInterface;
 use Magento\Payment\Gateway\Validator\AbstractValidator;
 use Magento\Payment\Gateway\Validator\ResultInterface;
 use Magento\Payment\Gateway\Validator\ResultInterfaceFactory;
-use Prisma\Decidir\Gateway\Helper\DataReader;
+use Prisma\Payway\Gateway\Helper\DataReader;
 use Psr\Log\InvalidArgumentException;
 
 /**

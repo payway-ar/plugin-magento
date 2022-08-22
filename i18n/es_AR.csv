@@ -8,7 +8,7 @@
 "Data provided is invalid","Error por datos inválidos"
 "Data provided was not found","Error con datos no encontrados"
 "Unexpected API error","Error inesperado en la API"
-"Credit Card (Decidir)","Tarjeta de Credito (Decidir)"
+"Credit Card (Payway)","Tarjeta de Credito (Payway)"
 "Available Credit Cards","Tarjetas Habilitadas"
 "New Order Status","Estado del Pedido"
 "The status in which the Order will be left, after the payment is processed","Estado que se asignara al Pedido luego de procesar el pago"
@@ -26,3 +26,4 @@
 "Installments","Cuota(s)"
 "Select Installments","Seleccione Cuota(s)"
 "Gateway error. Try again later","Error procesando el pago. Intente nuevamente más tarde"
+"Available Installments", "Cuota(s) Disponibles"

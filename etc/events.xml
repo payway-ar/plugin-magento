@@ -5,7 +5,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
-    <event name="payment_method_assign_data_decidir">
-        <observer name="decidir_gateway_data_assign" instance="Prisma\Decidir\Observer\DataAssignObserver" />
+    <event name="payment_method_assign_data_payway">
+        <observer name="payway_gateway_data_assign" instance="Prisma\Payway\Observer\DataAssignObserver" />
     </event>
 </config>
