@@ -3,7 +3,7 @@
  * Copyright © IURCO and PRISMA. All rights reserved.
  */
 
-namespace Prisma\Decidir\Model;
+namespace Prisma\Payway\Model;
 
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;

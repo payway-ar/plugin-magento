@@ -9,12 +9,12 @@ define([
     return function() {
         /**
          * Adds support for validating Credit Card Document Type value
-         * Validation to be used only for in the Checkout Decidir Payment field
+         * Validation to be used only for in the Checkout Payway Payment field
          */
         $.validator.addMethod(
-            'validate-cc-decidir-doctype',
+            'validate-cc-payway-doctype',
             function(value, element) {
-                var config = window.checkoutConfig.payment.decidir || {},
+                var config = window.checkoutConfig.payment.payway || {},
                     list = config && config.document_types;
 
                 return list.hasOwnProperty(value);

@@ -1,3 +1,8 @@
+<!--
+/**
+ * Copyright © IURCO and PRISMA. All rights reserved.
+ */
+-->
 <div class="payment-method" data-bind="css: {'_active': (getCode() == isChecked())}">
     <div class="payment-method-title field choice">
         <input type="radio"
@@ -20,7 +25,7 @@
 
         <!-- Render the native credit card form. -->
         <form class="form" data-bind="attr: {'id': getCode() + '-form'}">
-            <!-- ko template: "Prisma_Decidir/payment/decidir-cc-form" --><!-- /ko -->
+            <!-- ko template: "Prisma_Payway/payment/payway-cc-form" --><!-- /ko -->
         </form>
 
 
@@ -35,9 +40,9 @@
                 <button data-role="review-save"
                         type="submit"
                         data-bind="
+                        enable: getCode() == isChecked(),
                         attr: {title: $t('Place Order')},
-                        enable: (getCode() == isChecked()),
-                        click: placeOrder,
+                        click: generateToken,
                         css: {disabled: !isPlaceOrderActionAllowed()}
                         "
                         class="action primary checkout"

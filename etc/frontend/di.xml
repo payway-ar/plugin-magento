@@ -8,7 +8,7 @@
     <type name="Magento\Checkout\Model\CompositeConfigProvider">
         <arguments>
             <argument name="configProviders" xsi:type="array">
-                <item name="decidir" xsi:type="object">Prisma\Decidir\Model\Ui\ConfigProvider</item>
+                <item name="payway" xsi:type="object">Prisma\Payway\Model\Ui\ConfigProvider</item>
             </argument>
         </arguments>
     </type>
@@ -16,7 +16,7 @@
     <type name="Magento\Payment\Model\CcGenericConfigProvider">
         <arguments>
             <argument name="methodCodes" xsi:type="array">
-                <item name="decidir" xsi:type="const">Prisma\Decidir\Model\Ui\ConfigProvider::CODE</item>
+                <item name="payway" xsi:type="const">Prisma\Payway\Model\Ui\ConfigProvider::CODE</item>
             </argument>
         </arguments>
     </type>
@@ -26,7 +26,7 @@
     <type name="Magento\Payment\Model\CcGenericConfigProvider">
         <arguments>
             <argument name="methodCodes" xsi:type="array">
-                <item name="decidir" xsi:type="const">Prisma\Decidir\Model\Ui\ConfigProvider::CODE</item>
+                <item name="payway" xsi:type="const">Prisma\Payway\Model\Ui\ConfigProvider::CODE</item>
             </argument>
         </arguments>
     </type>

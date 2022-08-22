@@ -2,10 +2,10 @@
 /**
  * Copyright © IURCO and PRISMA. All rights reserved.
  */
-namespace Prisma\Decidir\Block;
+namespace Prisma\Payway\Block;
 
 use Magento\Backend\Model\Session\Quote;
-use Prisma\Decidir\Model\Config as GatewayConfig;
+use Prisma\Payway\Model\Config as GatewayConfig;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Element\Template\Context;
@@ -21,7 +21,7 @@ class Form extends Cc
      *
      * @var string
      */
-    protected $_template = 'Prisma_Decidir::form/default.phtml';
+    protected $_template = 'Prisma_Payway::form/default.phtml';
 
     /**
      * @var Quote

@@ -4,11 +4,11 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Gateway\Http\Client;
+namespace Prisma\Payway\Gateway\Http\Client;
 
 use Exception;
-use Prisma\Decidir\Api\Data\ErrorCodesInterface;
-use Prisma\Decidir\Model\Adapter\DecidirAdapter;
+use Prisma\Payway\Api\Data\ErrorCodesInterface;
+use Prisma\Payway\Model\Adapter\PaywayAdapter;
 use Magento\Payment\Gateway\Http\ClientException;
 use Magento\Payment\Gateway\Http\ClientInterface;
 use Magento\Payment\Gateway\Http\TransferInterface;
@@ -32,7 +32,7 @@ abstract class AbstractTransaction implements ClientInterface
     protected $customLogger;
 
     /**
-     * @var DecidirAdapter
+     * @var PaywayAdapter
      */
     protected $adapter;
 
@@ -41,12 +41,12 @@ abstract class AbstractTransaction implements ClientInterface
      *
      * @param LoggerInterface $logger
      * @param Logger $customLogger
-     * @param DecidirAdapter $adapter
+     * @param PaywayAdapter $adapter
      */
     public function __construct(
         LoggerInterface $logger,
         Logger $customLogger,
-        DecidirAdapter $adapter
+        PaywayAdapter $adapter
     ) {
         $this->logger = $logger;
         $this->customLogger = $customLogger;

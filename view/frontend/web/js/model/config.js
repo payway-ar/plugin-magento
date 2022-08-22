@@ -8,7 +8,7 @@
 define([], function () {
     'use strict';
 
-    var config = window.checkoutConfig.payment.decidir;
+    var config = window.checkoutConfig.payment.payway;
 
     return {
         /**

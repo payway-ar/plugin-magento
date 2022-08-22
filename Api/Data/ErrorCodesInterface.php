@@ -4,7 +4,7 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Api\Data;
+namespace Prisma\Payway\Api\Data;
 
 /**
  * Gateway errors

@@ -4,11 +4,11 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Gateway\Request\Order;
+namespace Prisma\Payway\Gateway\Request\Order;
 
 use Magento\Payment\Gateway\Request\BuilderInterface;
-use Prisma\Decidir\Gateway\Helper\DataReader;
-
+use Prisma\Payway\Gateway\Helper\DataReader;
+use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 /**
  * Assigns the Order Id to the request
  */
@@ -22,13 +22,20 @@ class SiteTransactionIdDataBuilder implements BuilderInterface
     private $reader;
 
     /**
+     * @var TimezoneInterface
+     */
+    protected $timezone;
+
+    /**
      * Constructor
      *
      * @param DataReader $reader
+     * @param TimezoneInterface $timezone
      */
-    public function __construct(DataReader $reader)
+    public function __construct(DataReader $reader, TimezoneInterface $timezone)
     {
         $this->reader = $reader;
+        $this->timezone = $timezone;
     }
 
     /**
@@ -40,7 +47,7 @@ class SiteTransactionIdDataBuilder implements BuilderInterface
         $order = $payment->getOrder();
 
         return [
-            self::SITE_TRANSACTION_ID => $order->getOrderIncrementId()
+            self::SITE_TRANSACTION_ID => $order->getOrderIncrementId() . '_' . $this->timezone->scopeTimeStamp()
         ];
     }
 }

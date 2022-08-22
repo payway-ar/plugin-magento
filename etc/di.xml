@@ -5,162 +5,162 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Prisma\Decidir\Gateway\Config\Config">
+    <type name="Prisma\Payway\Gateway\Config\Config">
         <arguments>
-            <argument name="methodCode" xsi:type="const">Prisma\Decidir\Model\Ui\ConfigProvider::CODE</argument>
+            <argument name="methodCode" xsi:type="const">Prisma\Payway\Model\Ui\ConfigProvider::CODE</argument>
         </arguments>
     </type>
 
-    <virtualType name="DecidirFacade" type="Magento\Payment\Model\Method\Adapter">
+    <virtualType name="PaywayFacade" type="Magento\Payment\Model\Method\Adapter">
         <arguments>
-            <argument name="code" xsi:type="const">Prisma\Decidir\Model\Ui\ConfigProvider::CODE</argument>
+            <argument name="code" xsi:type="const">Prisma\Payway\Model\Ui\ConfigProvider::CODE</argument>
             <argument name="formBlockType" xsi:type="string">Magento\Payment\Block\Form\Cc</argument>
-            <argument name="infoBlockType" xsi:type="string">Prisma\Decidir\Block\Adminhtml\Info</argument>
-            <argument name="valueHandlerPool" xsi:type="object">DecidirValueHandlerPool</argument>
-            <argument name="validatorPool" xsi:type="object">DecidirValidatorPool</argument>
-            <argument name="commandPool" xsi:type="object">DecidirCommandPool</argument>
+            <argument name="infoBlockType" xsi:type="string">Prisma\Payway\Block\Adminhtml\Info</argument>
+            <argument name="valueHandlerPool" xsi:type="object">PaywayValueHandlerPool</argument>
+            <argument name="validatorPool" xsi:type="object">PaywayValidatorPool</argument>
+            <argument name="commandPool" xsi:type="object">PaywayCommandPool</argument>
         </arguments>
     </virtualType>
 
-    <virtualType name="DecidirValueHandlerPool" type="Magento\Payment\Gateway\Config\ValueHandlerPool">
+    <virtualType name="PaywayValueHandlerPool" type="Magento\Payment\Gateway\Config\ValueHandlerPool">
         <arguments>
             <argument name="handlers" xsi:type="array">
-                <item name="default" xsi:type="string">DecidirConfigValueHandler</item>
+                <item name="default" xsi:type="string">PaywayConfigValueHandler</item>
             </argument>
         </arguments>
     </virtualType>
 
-    <virtualType name="DecidirConfigValueHandler" type="Magento\Payment\Gateway\Config\ConfigValueHandler">
+    <virtualType name="PaywayConfigValueHandler" type="Magento\Payment\Gateway\Config\ConfigValueHandler">
         <arguments>
-            <argument name="configInterface" xsi:type="object">Prisma\Decidir\Gateway\Config\Config</argument>
+            <argument name="configInterface" xsi:type="object">Prisma\Payway\Gateway\Config\Config</argument>
         </arguments>
     </virtualType>
 
-    <virtualType name="DecidirCommandPool" type="Magento\Payment\Gateway\Command\CommandPool">
+    <virtualType name="PaywayCommandPool" type="Magento\Payment\Gateway\Command\CommandPool">
         <arguments>
             <argument name="commands" xsi:type="array">
-                <item name="capture" xsi:type="string">DecidirCaptureCommand</item>
-                <item name="refund" xsi:type="string">DecidirRefundCommand</item>
-<!--                <item name="void" xsi:type="string">DecidirVoidCommand</item>-->
+                <item name="capture" xsi:type="string">PaywayCaptureCommand</item>
+                <item name="refund" xsi:type="string">PaywayRefundCommand</item>
+<!--                <item name="void" xsi:type="string">PaywayVoidCommand</item>-->
             </argument>
         </arguments>
     </virtualType>
 
-    <virtualType name="DecidirCaptureCommand" type="Magento\Payment\Gateway\Command\GatewayCommand">
+    <virtualType name="PaywayCaptureCommand" type="Magento\Payment\Gateway\Command\GatewayCommand">
         <arguments>
-            <argument name="requestBuilder" xsi:type="object">DecidirCaptureRequest</argument>
-            <argument name="transferFactory" xsi:type="object">Prisma\Decidir\Gateway\Http\TransferFactory</argument>
-            <argument name="client" xsi:type="object">Prisma\Decidir\Gateway\Http\Client\TransactionSale</argument>
-            <argument name="handler" xsi:type="object">DecidirCaptureHandlerChain</argument>
-<!--            <argument name="validator" xsi:type="object">Prisma\Decidir\Gateway\Validator\ResponseValidator</argument>-->
-            <argument name="validator" xsi:type="object">Prisma\Decidir\Gateway\Validator\ValidatorPool</argument>
-            <argument name="errorMessageMapper" xsi:type="object">Prisma\Decidir\Gateway\ErrorMapper\VirtualErrorMessageMapper</argument>
+            <argument name="requestBuilder" xsi:type="object">PaywayCaptureRequest</argument>
+            <argument name="transferFactory" xsi:type="object">Prisma\Payway\Gateway\Http\TransferFactory</argument>
+            <argument name="client" xsi:type="object">Prisma\Payway\Gateway\Http\Client\TransactionSale</argument>
+            <argument name="handler" xsi:type="object">PaywayCaptureHandlerChain</argument>
+<!--            <argument name="validator" xsi:type="object">Prisma\Payway\Gateway\Validator\ResponseValidator</argument>-->
+            <argument name="validator" xsi:type="object">Prisma\Payway\Gateway\Validator\ValidatorPool</argument>
+            <argument name="errorMessageMapper" xsi:type="object">Prisma\Payway\Gateway\ErrorMapper\VirtualErrorMessageMapper</argument>
         </arguments>
     </virtualType>
 
     <!-- Refund Command -->
-    <virtualType name="DecidirRefundCommand" type="Magento\Payment\Gateway\Command\GatewayCommand">
+    <virtualType name="PaywayRefundCommand" type="Magento\Payment\Gateway\Command\GatewayCommand">
         <arguments>
-            <argument name="client" xsi:type="object">Prisma\Decidir\Gateway\Http\Client\TransactionRefund</argument>
-            <argument name="transferFactory" xsi:type="object">Prisma\Decidir\Gateway\Http\TransferFactory</argument>
-            <argument name="requestBuilder" xsi:type="object">Prisma\Decidir\Gateway\Request\RefundDataBuilder</argument>
-            <argument name="validator" xsi:type="object">Prisma\Decidir\Gateway\Validator\GeneralResponseValidator</argument>
-            <argument name="handler" xsi:type="object">Prisma\Decidir\Gateway\Response\RefundHandler</argument>
+            <argument name="client" xsi:type="object">Prisma\Payway\Gateway\Http\Client\TransactionRefund</argument>
+            <argument name="transferFactory" xsi:type="object">Prisma\Payway\Gateway\Http\TransferFactory</argument>
+            <argument name="requestBuilder" xsi:type="object">Prisma\Payway\Gateway\Request\RefundDataBuilder</argument>
+            <argument name="validator" xsi:type="object">Prisma\Payway\Gateway\Validator\GeneralResponseValidator</argument>
+            <argument name="handler" xsi:type="object">Prisma\Payway\Gateway\Response\RefundHandler</argument>
         </arguments>
     </virtualType>
 
     <!-- Void Command -->
-<!--    <virtualType name="DecidirVoidCommand" type="Magento\Payment\Gateway\Command\GatewayCommand">-->
+<!--    <virtualType name="PaywayVoidCommand" type="Magento\Payment\Gateway\Command\GatewayCommand">-->
 <!--        <arguments>-->
-<!--            <argument name="client" xsi:type="object">Prisma\Decidir\Gateway\Http\Client\TransactionRefund</argument>-->
-<!--            <argument name="transferFactory" xsi:type="object">Prisma\Decidir\Gateway\Http\TransferFactory</argument>-->
-<!--            <argument name="requestBuilder" xsi:type="object">Prisma\Decidir\Gateway\Request\RefundDataBuilder</argument>-->
-<!--            <argument name="validator" xsi:type="object">Prisma\Decidir\Gateway\Validator\GeneralResponseValidator</argument>-->
-<!--            <argument name="handler" xsi:type="object">Prisma\Decidir\Gateway\Response\RefundHandler</argument>-->
+<!--            <argument name="client" xsi:type="object">Prisma\Payway\Gateway\Http\Client\TransactionRefund</argument>-->
+<!--            <argument name="transferFactory" xsi:type="object">Prisma\Payway\Gateway\Http\TransferFactory</argument>-->
+<!--            <argument name="requestBuilder" xsi:type="object">Prisma\Payway\Gateway\Request\RefundDataBuilder</argument>-->
+<!--            <argument name="validator" xsi:type="object">Prisma\Payway\Gateway\Validator\GeneralResponseValidator</argument>-->
+<!--            <argument name="handler" xsi:type="object">Prisma\Payway\Gateway\Response\RefundHandler</argument>-->
 <!--        </arguments>-->
 <!--    </virtualType>-->
 
     <!-- Capture response handlers -->
-    <virtualType name="DecidirCaptureHandlerChain" type="Magento\Payment\Gateway\Response\HandlerChain">
+    <virtualType name="PaywayCaptureHandlerChain" type="Magento\Payment\Gateway\Response\HandlerChain">
         <arguments>
             <argument name="handlers" xsi:type="array">
-                <item name="debug_response_body" xsi:type="string">Prisma\Decidir\Gateway\Response\DebugBodyHandler</item>
-                <item name="payment_details" xsi:type="string">Prisma\Decidir\Gateway\Response\PaymentDetailsHandler</item>
-                <item name="txn_id" xsi:type="string">Prisma\Decidir\Gateway\Response\TransactionIdHandler</item>
-                <item name="credit_card" xsi:type="string">Prisma\Decidir\Gateway\Response\CreditCardHandler</item>
-                <item name="address_validation" xsi:type="string">Prisma\Decidir\Gateway\Response\AddressValidationHandler</item>
-                <item name="cybersource" xsi:type="string">Prisma\Decidir\Gateway\Response\Cybersource\CybersourceHandler</item>
+                <item name="debug_response_body" xsi:type="string">Prisma\Payway\Gateway\Response\DebugBodyHandler</item>
+                <item name="payment_details" xsi:type="string">Prisma\Payway\Gateway\Response\PaymentDetailsHandler</item>
+                <item name="txn_id" xsi:type="string">Prisma\Payway\Gateway\Response\TransactionIdHandler</item>
+                <item name="credit_card" xsi:type="string">Prisma\Payway\Gateway\Response\CreditCardHandler</item>
+                <item name="address_validation" xsi:type="string">Prisma\Payway\Gateway\Response\AddressValidationHandler</item>
+                <item name="cybersource" xsi:type="string">Prisma\Payway\Gateway\Response\Cybersource\CybersourceHandler</item>
             </argument>
         </arguments>
     </virtualType>
 
     <!-- Request Builders -->
-    <virtualType name="DecidirCaptureRequest" type="Magento\Payment\Gateway\Request\BuilderComposite">
+    <virtualType name="PaywayCaptureRequest" type="Magento\Payment\Gateway\Request\BuilderComposite">
         <arguments>
             <argument name="builders" xsi:type="array">
-                <item name="customer" xsi:type="string">Prisma\Decidir\Gateway\Request\CustomerDataBuilder</item>
-                <item name="payment" xsi:type="string">Prisma\Decidir\Gateway\Request\PaymentDataBuilder</item>
-                <item name="site_transaction_id" xsi:type="string">Prisma\Decidir\Gateway\Request\Order\SiteTransactionIdDataBuilder</item>
-                <item name="amount" xsi:type="string">Prisma\Decidir\Gateway\Request\Order\AmountDataBuilder</item>
-                <item name="token" xsi:type="string">Prisma\Decidir\Gateway\Request\TokenDataBuilder</item>
-                <item name="sub_payments" xsi:type="string">Prisma\Decidir\Gateway\Request\SubPaymentsDataBuilder</item>
-                <item name="currency" xsi:type="string">Prisma\Decidir\Gateway\Request\Order\CurrencyDataBuilder</item>
-                <item name="description" xsi:type="string">Prisma\Decidir\Gateway\Request\DescriptionDataBuilder</item>
-                <item name="establishment_data" xsi:type="string">Prisma\Decidir\Gateway\Request\Order\EstablishmentDataBuilder</item>
-                <item name="cybersource_builder" xsi:type="string">Prisma\Decidir\Gateway\Request\Cybersource\CybersourceBuilderPool</item>
+                <item name="customer" xsi:type="string">Prisma\Payway\Gateway\Request\CustomerDataBuilder</item>
+                <item name="payment" xsi:type="string">Prisma\Payway\Gateway\Request\PaymentDataBuilder</item>
+                <item name="site_transaction_id" xsi:type="string">Prisma\Payway\Gateway\Request\Order\SiteTransactionIdDataBuilder</item>
+                <item name="amount" xsi:type="string">Prisma\Payway\Gateway\Request\Order\AmountDataBuilder</item>
+                <item name="token" xsi:type="string">Prisma\Payway\Gateway\Request\TokenDataBuilder</item>
+                <item name="sub_payments" xsi:type="string">Prisma\Payway\Gateway\Request\SubPaymentsDataBuilder</item>
+                <item name="currency" xsi:type="string">Prisma\Payway\Gateway\Request\Order\CurrencyDataBuilder</item>
+                <item name="description" xsi:type="string">Prisma\Payway\Gateway\Request\DescriptionDataBuilder</item>
+                <item name="establishment_data" xsi:type="string">Prisma\Payway\Gateway\Request\Order\EstablishmentDataBuilder</item>
+                <item name="cybersource_builder" xsi:type="string">Prisma\Payway\Gateway\Request\Cybersource\CybersourceBuilderPool</item>
             </argument>
         </arguments>
     </virtualType>
 
     <!-- Cysbersource Retail Processors-->
-    <type name="Prisma\Decidir\Gateway\Request\Cybersource\CybersourceBuilderPool">
+    <type name="Prisma\Payway\Gateway\Request\Cybersource\CybersourceBuilderPool">
         <arguments>
             <argument name="processors" xsi:type="array">
-                <item name="retail" xsi:type="object">Prisma\Decidir\Gateway\Request\Cybersource\Processors\RetailProcessor</item>
+                <item name="retail" xsi:type="object">Prisma\Payway\Gateway\Request\Cybersource\Processors\RetailProcessor</item>
             </argument>
         </arguments>
     </type>
     <!-- Validators -->
-    <virtualType name="DecidirValidatorPool" type="Magento\Payment\Gateway\Validator\ValidatorPool">
+    <virtualType name="PaywayValidatorPool" type="Magento\Payment\Gateway\Validator\ValidatorPool">
         <arguments>
             <argument name="validators" xsi:type="array">
-<!--                <item name="country" xsi:type="string">DecidirCountryValidator</item>-->
-                <item name="decidirMainValidator" xsi:type="string">Prisma\Decidir\Gateway\Validator\ValidatorPool</item>
+<!--                <item name="country" xsi:type="string">PaywayCountryValidator</item>-->
+                <item name="paywayMainValidator" xsi:type="string">Prisma\Payway\Gateway\Validator\ValidatorPool</item>
             </argument>
         </arguments>
     </virtualType>
 
-    <type name="Prisma\Decidir\Gateway\Validator\ValidatorPool">
+    <type name="Prisma\Payway\Gateway\Validator\ValidatorPool">
         <arguments>
             <argument name="validators" xsi:type="array">
-                <item name="response" xsi:type="object">\Prisma\Decidir\Gateway\Validator\ResponseValidator</item>
-                <item name="retail" xsi:type="object">\Prisma\Decidir\Gateway\Validator\Cybersource\RetailValidator</item>
-                <item name="payment" xsi:type="object">\Prisma\Decidir\Gateway\Validator\PaymentValidator</item>
+                <item name="response" xsi:type="object">\Prisma\Payway\Gateway\Validator\ResponseValidator</item>
+                <item name="retail" xsi:type="object">\Prisma\Payway\Gateway\Validator\Cybersource\RetailValidator</item>
+                <item name="payment" xsi:type="object">\Prisma\Payway\Gateway\Validator\PaymentValidator</item>
             </argument>
         </arguments>
     </type>
 
-<!--    <virtualType name="DecidirCountryValidator" type="Magento\Payment\Gateway\Validator\CountryValidator">-->
+<!--    <virtualType name="PaywayCountryValidator" type="Magento\Payment\Gateway\Validator\CountryValidator">-->
 <!--        <arguments>-->
-<!--            <argument name="config" xsi:type="object">Prisma\Decidir\Gateway\Config\Config</argument>-->
+<!--            <argument name="config" xsi:type="object">Prisma\Payway\Gateway\Config\Config</argument>-->
 <!--        </arguments>-->
 <!--    </virtualType>-->
 
     <!-- Gateway error mapping -->
-    <virtualType name="Prisma\Decidir\Gateway\ErrorMapper\VirtualConfigReader" type="Magento\Payment\Gateway\ErrorMapper\VirtualConfigReader">
+    <virtualType name="Prisma\Payway\Gateway\ErrorMapper\VirtualConfigReader" type="Magento\Payment\Gateway\ErrorMapper\VirtualConfigReader">
         <arguments>
-            <argument name="fileName" xsi:type="string">decidir_error_mapping.xml</argument>
+            <argument name="fileName" xsi:type="string">payway_error_mapping.xml</argument>
         </arguments>
     </virtualType>
-    <virtualType name="Prisma\Decidir\Gateway\ErrorMapper\VirtualMappingData" type="Magento\Payment\Gateway\ErrorMapper\MappingData">
+    <virtualType name="Prisma\Payway\Gateway\ErrorMapper\VirtualMappingData" type="Magento\Payment\Gateway\ErrorMapper\MappingData">
         <arguments>
-            <argument name="reader" xsi:type="object">Prisma\Decidir\Gateway\ErrorMapper\VirtualConfigReader</argument>
-            <argument name="cacheId" xsi:type="string">decidir_error_mapper</argument>
+            <argument name="reader" xsi:type="object">Prisma\Payway\Gateway\ErrorMapper\VirtualConfigReader</argument>
+            <argument name="cacheId" xsi:type="string">payway_error_mapper</argument>
         </arguments>
     </virtualType>
-    <virtualType name="Prisma\Decidir\Gateway\ErrorMapper\VirtualErrorMessageMapper" type="Magento\Payment\Gateway\ErrorMapper\ErrorMessageMapper">
+    <virtualType name="Prisma\Payway\Gateway\ErrorMapper\VirtualErrorMessageMapper" type="Magento\Payment\Gateway\ErrorMapper\ErrorMessageMapper">
         <arguments>
-            <argument name="messageMapping" xsi:type="object">Prisma\Decidir\Gateway\ErrorMapper\VirtualMappingData</argument>
+            <argument name="messageMapping" xsi:type="object">Prisma\Payway\Gateway\ErrorMapper\VirtualMappingData</argument>
         </arguments>
     </virtualType>
 </config>

@@ -4,11 +4,11 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Model;
+namespace Prisma\Payway\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Serialize\SerializerInterface;
-use Prisma\Decidir\Model\StoreConfigResolver;
+use Prisma\Payway\Model\StoreConfigResolver;
 
 /**
  * General purpose configuration retrieval tool
@@ -19,7 +19,7 @@ class Config
     const CREDENTIALS_PRIVATE_KEY = 'private_key';
     const CREDENTIALS_JS_URL = 'url';
 
-    const XPATH_BASE = 'payment/decidir/';
+    const XPATH_BASE = 'payment/payway/';
     const XPATH_MODULE_ACTIVE = 'active';
 
     const MODE_SANDBOX = 'sandbox';

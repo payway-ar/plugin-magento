@@ -4,7 +4,7 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Gateway\Helper;
+namespace Prisma\Payway\Gateway\Helper;
 
 use Decidir\Data\Response;
 use Decidir\Payment\PaymentResponse;

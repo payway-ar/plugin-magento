@@ -6,6 +6,6 @@ use Magento\Framework\Component\ComponentRegistrar;
 
 ComponentRegistrar::register(
     ComponentRegistrar::MODULE,
-    'Prisma_Decidir',
+    'Prisma_Payway',
     __DIR__
 );

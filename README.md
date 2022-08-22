@@ -1,14 +1,14 @@
-# Payway Payment for Magento 2
+# Prisma Payway Magento 2
 
 ## M2 Versiones soportadas
-* Magento 2.4+
+* Magento 2.4.2 | 2.4.3
 
-## Payway PHP-SDK version soportada
+## Decidir PHP-SDK version soportada
 * 1.5.6
 
 ## Instalación
 ### Composer
-1. Ejecutar `composer require "prisma/module-payway"`
+1. Ejecutar `composer require "prisma/module-decidir"`
    - Instalará los modulos `Prisma_Payway` y `Prisma_PaywayPromotions`
 2. Ejecutar `bin/magento module:enable Prisma_Payway`
 3. Ejecutar `bin/magento module:enable Prisma_PaywayPromotions`
@@ -50,30 +50,30 @@ Para insertar datos puede ejecutar el siguiente query
   ```  
   INSERT INTO directory_country_region (country_id, code, default_name)   
   VALUES  
- ("AR", "C", "Ciudad Autónoma De Buenos Aires")
-  ("AR", "B", "Buenos Aires"),
-  ("AR", "K", "Catamarca"),
-  ("AR", "H", "Chaco"),
-  ("AR", "U", "Chubut"),
-  ("AR", "X", "Córdoba"),
-  ("AR", "W", "Corrientes"),
-  ("AR", "E", "Entre Ríos"),
-  ("AR", "P", "Formosa"),
-  ("AR", "Y", "Jujuy"),
-  ("AR", "L", "La Pampa"),
-  ("AR", "F", "La Rioja"),
-  ("AR", "M", "Mendoza"),
-  ("AR", "N", "Misiones"),
-  ("AR", "Q", "Neuquén"),
-  ("AR", "R", "Río Negro"),
-  ("AR", "A", "Salta"),
-  ("AR", "J", "San Juan"),
-  ("AR", "D", "San Luis"),
-  ("AR", "Z", "Santa Cruz"),
-  ("AR", "S", "Santa Fe"),
-  ("AR", "G", "Santiago del Estero"),
-  ("AR", "V", "Tierra del Fuego"),
-  ("AR", "T", "Tucumán")
+ ("AR", "AR-C", "Ciudad Autónoma De Buenos Aires")
+  ("AR", "AR-B", "Buenos Aires"),
+  ("AR", "AR-K", "Catamarca"),
+  ("AR", "AR-H", "Chaco"),
+  ("AR", "AR-U", "Chubut"),
+  ("AR", "AR-X", "Córdoba"),
+  ("AR", "AR-W", "Corrientes"),
+  ("AR", "AR-E", "Entre Ríos"),
+  ("AR", "AR-P", "Formosa"),
+  ("AR", "AR-Y", "Jujuy"),
+  ("AR", "AR-L", "La Pampa"),
+  ("AR", "AR-F", "La Rioja"),
+  ("AR", "AR-M", "Mendoza"),
+  ("AR", "AR-N", "Misiones"),
+  ("AR", "AR-Q", "Neuquén"),
+  ("AR", "AR-R", "Río Negro"),
+  ("AR", "AR-A", "Salta"),
+  ("AR", "AR-J", "San Juan"),
+  ("AR", "AR-D", "San Luis"),
+  ("AR", "AR-Z", "Santa Cruz"),
+  ("AR", "AR-S", "Santa Fe"),
+  ("AR", "AR-G", "Santiago del Estero"),
+  ("AR", "AR-V", "Tierra del Fuego"),
+  ("AR", "AR-T", "Tucumán")
   ;
    ``` 
 *NOTA:*   
@@ -124,13 +124,13 @@ Donde `en_US` es el locale, `888` es el region_id (este value se obtiene ejecuta
             - Coeficiente -> Intereses aplicables
             - TEA -> Valor informativo Informativo
             - CFT -> Valor informativo Informativo
-            - Cuota que se Envia -> Valor de la cuota utilizado para enviar a Payway
+            - Cuota que se Envia -> Valor de la cuota utilizado para enviar a DECIDIR
 
 ## Transaction Logs
 #### Save transaction logs 
-  Si se habilita esta opción, se guardara en la tabla `prisma_payway_transaction_logs` el payload de la respuesta de Payway e info relevante por cada transacción realizada.
+  Si se habilita esta opción, se guardara en la tabla `prisma_decidir_transaction_logs` el payload de la respuesta de DECIDIR e info relevante por cada transacción realizada.
 #### Enable Cleanup Logs Cron
-  Si se habilita esta opción, se ejecutara un cronjob que eliminará registros de la tabla `prisma_payway_transaction_logs` de acuerdo a los dias configurados. <br>
+  Si se habilita esta opción, se ejecutara un cronjob que eliminará registros de la tabla `prisma_decidir_transaction_logs` de acuerdo a los dias configurados. <br>
   ###### Importante:
 **_Si se habilita el guardado de logs es importante y recomendable habilitar este cron para limpiar registros y prevenir un oversize de la tabla_**
 #### Clean Transaction Logs Older Than
@@ -146,15 +146,15 @@ Donde `en_US` es el locale, `888` es el region_id (este value se obtiene ejecuta
 6. Ejecutar `bin/magento cache:flush`
 
 ## Desinstalación
-1. Ejecutar `composer remove "prisma/module-payway"`
+1. Ejecutar `composer remove "prisma/module-decidir"`
    
 *NOTA:*
  
 No se removerán tablas:
-- `prisma_payway_promotions_bank`
-- `prisma_payway_promotions_card`
-- `prisma_payway_promotions_rules`
-- `prisma_payway_transaction_logs`
+- `prisma_decidir_promotions_bank`
+- `prisma_decidir_promotions_card`
+- `prisma_decidir_promotions_rules`
+- `prisma_decidir_transaction_logs`
 
 No se removerán los datos de:
 - `core_config_data`

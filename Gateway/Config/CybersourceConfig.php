@@ -4,12 +4,12 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Gateway\Config;
+namespace Prisma\Payway\Gateway\Config;
 
-use Prisma\Decidir\Gateway\Config\Config as Config;
+use Prisma\Payway\Gateway\Config\Config as Config;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Prisma\Decidir\Model\StoreConfigResolver;
-use Prisma\Decidir\Model\Config as ModuleConfig;
+use Prisma\Payway\Model\StoreConfigResolver;
+use Prisma\Payway\Model\Config as ModuleConfig;
 
 
 /**

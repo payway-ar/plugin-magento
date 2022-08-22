@@ -2,7 +2,7 @@
 /**
  * Copyright © IURCO and PRISMA. All rights reserved.
  */
-namespace Prisma\Decidir\Model\Ui;
+namespace Prisma\Payway\Model\Ui;
 
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Store\Model\StoreManagerInterface;
@@ -10,9 +10,9 @@ use Magento\Payment\Model\CcConfig;
 use Magento\Framework\View\Asset\Source;
 //use Magento\Payment\Helper\Data as PaymentHelper;
 //use Magento\Payment\Model\CcGenericConfigProvider;
-//use Prisma\Decidir\Model\Decidir;
-//use Prisma\Decidir\Model\Config;
-use Prisma\Decidir\Gateway\Config\Config;
+//use Prisma\Payway\Model\Payway;
+//use Prisma\Payway\Model\Config;
+use Prisma\Payway\Gateway\Config\Config;
 
 /**
  * Checkout configuration data provider
@@ -24,7 +24,7 @@ class ConfigProvider implements ConfigProviderInterface
     /**
      * @var string
      */
-    const CODE = 'decidir';
+    const CODE = 'payway';
 
     /**
      * @var array
@@ -215,7 +215,7 @@ class ConfigProvider implements ConfigProviderInterface
         $types = $this->ccConfig->getCcAvailableTypes();
         foreach ($types as $code => $label) {
             if (!array_key_exists($code, $this->icons)) {
-                $asset = $this->ccConfig->createAsset('Prisma_Decidir::images/cc/' . strtolower($code) . '.png');
+                $asset = $this->ccConfig->createAsset('Prisma_payway::images/cc/' . strtolower($code) . '.png');
                 $placeholder = $this->assetSource->findSource($asset);
                 if ($placeholder) {
                     list($width, $height) = getimagesize($asset->getSourceFile());

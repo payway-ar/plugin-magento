@@ -7,7 +7,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
         <payment>
-            <decidir>
+            <payway>
                 <title>Credit Card (Payway)</title>
                 <active>0</active>
                 <debug>1</debug>
@@ -24,7 +24,7 @@
                 <installments>1</installments>
                 <useccv>1</useccv>
                 <order_status>processing</order_status>
-                <model>DecidirFacade</model>
+                <model>PaywayFacade</model>
                 <payment_action>authorize_capture</payment_action>
                 <module_mode>sandbox</module_mode>
                 <sandbox_public_key backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
@@ -33,13 +33,13 @@
                 <production_private_key backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
                 <sandbox_js_url>https://developers.decidir.com/api/v2</sandbox_js_url>
                 <production_js_url>https://live.decidir.com/api/v2</production_js_url>
-                <group>prisma_decidir</group>
+                <group>prisma_payway</group>
                 <privateInfoKeys>token,bin</privateInfoKeys>
                 <paymentInfoKeys>cc_type,cc_exp_month,cc_exp_year,cc_number</paymentInfoKeys>
                 <cs_active>1</cs_active>
                 <cs_vertical>retail</cs_vertical>
                 <cs_region_source>magento_default</cs_region_source>
-            </decidir>
+            </payway>
         </payment>
     </default>
 </config>

@@ -4,12 +4,12 @@
  */
 declare(strict_types=1);
 
-namespace Prisma\Decidir\Gateway\Validator;
+namespace Prisma\Payway\Gateway\Validator;
 
 use Magento\Payment\Gateway\Validator\AbstractValidator;
 use Magento\Payment\Gateway\Validator\ResultInterface;
 use Magento\Payment\Gateway\Validator\ResultInterfaceFactory;
-use Prisma\Decidir\Model\ResultProvider;
+use Prisma\Payway\Model\ResultProvider;
 
 /**
  * Validates response coming from the Gateway
