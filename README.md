@@ -6,6 +6,9 @@
 ## Payway PHP-SDK version soportada
 * 1.5.6
 
+## Aclaración: 
+**Magento solo soporta la modalidad de pago Simple y Simple con Cybersource- Retail**
+
 ## Instalación
 ### Composer
 1. Ejecutar `composer require "prisma/module-payway"`
